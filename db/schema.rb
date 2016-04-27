@@ -11,6 +11,87 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160427170625) do
 
+  create_table "group_users", force: :cascade do |t|
+    t.integer  "group_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "group_users", ["group_id"], name: "index_group_users_on_group_id", using: :btree
+  add_index "group_users", ["user_id"], name: "index_group_users_on_user_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "gname",      limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.boolean  "joined"
+    t.integer  "user_id",    limit: 4
+    t.integer  "ordr_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "notifications", ["ordr_id"], name: "index_notifications_on_ordr_id", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
+  create_table "order_details", force: :cascade do |t|
+    t.string   "item",            limit: 255
+    t.integer  "qty",             limit: 4
+    t.integer  "price",           limit: 4
+    t.string   "comment",         limit: 255
+    t.integer  "notification_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "order_details", ["notification_id"], name: "index_order_details_on_notification_id", using: :btree
+
+  create_table "ordrs", force: :cascade do |t|
+    t.string   "otype",      limit: 255
+    t.string   "ofrom",      limit: 255
+    t.string   "menu",       limit: 255
+    t.integer  "invited",    limit: 4
+    t.integer  "joined",     limit: 4
+    t.string   "status",     limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "ordrs", ["user_id"], name: "index_ordrs_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "groups", "users"
+  add_foreign_key "notifications", "ordrs"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "order_details", "notifications"
+  add_foreign_key "ordrs", "users"
 end

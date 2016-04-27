@@ -1,0 +1,45 @@
+<%= form_for(@ordr) do |f| %>
+  <% if @ordr.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ordr.errors.count, "error") %> prohibited this ordr from being saved:</h2>
+
+      <ul>
+      <% @ordr.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :otype %><br>
+    <%= f.text_field :otype %>
+  </div>
+  <div class="field">
+    <%= f.label :ofrom %><br>
+    <%= f.text_field :ofrom %>
+  </div>
+  <div class="field">
+    <%= f.label :menu %><br>
+    <%= f.text_field :menu %>
+  </div>
+  <div class="field">
+    <%= f.label :invited %><br>
+    <%= f.number_field :invited %>
+  </div>
+  <div class="field">
+    <%= f.label :joined %><br>
+    <%= f.number_field :joined %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

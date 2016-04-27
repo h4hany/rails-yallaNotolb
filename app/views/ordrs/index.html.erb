@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ordrs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Otype</th>
+      <th>Ofrom</th>
+      <th>Menu</th>
+      <th>Invited</th>
+      <th>Joined</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordrs.each do |ordr| %>
+      <tr>
+        <td><%= ordr.otype %></td>
+        <td><%= ordr.ofrom %></td>
+        <td><%= ordr.menu %></td>
+        <td><%= ordr.invited %></td>
+        <td><%= ordr.joined %></td>
+        <td><%= ordr.status %></td>
+        <td><%= ordr.user %></td>
+        <td><%= link_to 'Show', ordr %></td>
+        <td><%= link_to 'Edit', edit_ordr_path(ordr) %></td>
+        <td><%= link_to 'Destroy', ordr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ordr', new_ordr_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Otype:</strong>
+  <%= @ordr.otype %>
+</p>
+
+<p>
+  <strong>Ofrom:</strong>
+  <%= @ordr.ofrom %>
+</p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @ordr.menu %>
+</p>
+
+<p>
+  <strong>Invited:</strong>
+  <%= @ordr.invited %>
+</p>
+
+<p>
+  <strong>Joined:</strong>
+  <%= @ordr.joined %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @ordr.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ordr.user %>
+</p>
+
+<%= link_to 'Edit', edit_ordr_path(@ordr) %> |
+<%= link_to 'Back', ordrs_path %>
