@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yalanotlob</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <script type="text/javascript">
+    $(function() {
+      $('.gallery a').lightBox();
+    });
+  </script>
+  <script type="text/javascript">
+    jQuery(function(){
+      jQuery('#camera_wrap_1').camera({
+        pagination: false,
+      });
+    });
+  </script>
+</head>
+<body>
+<%= render "layouts/header" %>
+<%= yield %>
+<%= render "layouts/footer" %>
+
+</body>
+</html>
