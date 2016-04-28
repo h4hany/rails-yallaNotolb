@@ -3,6 +3,15 @@ class GroupsController < ApplicationController
 
   # GET /groups
   # GET /groups.json
+  def getUsers
+    gid = Group.find_by(gname: params[:str]).id
+    # render :json => {user: gid}
+    if gid > 0
+      ids = GroupUser.find_by(group_id: gid)
+      render :json => {user:ids}
+    end
+  end
+
   def index
     @groups = Group.all
   end

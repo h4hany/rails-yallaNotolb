@@ -24,13 +24,18 @@
     <%= f.text_field :menu %>
   </div>
   <div class="field">
+    <%= f.label "Friend/Group" %><br>
+    <%= f.text_field :virtual_attribute %>
+    <a href="#" class="btn btn-success" onclick="addFriend()">Add friend</a>
+  </div>
+  <!-- <div class="field">
     <%= f.label :invited %><br>
     <%= f.number_field :invited %>
-  </div>
-  <div class="field">
+  </div> -->
+  <!-- <div class="field">
     <%= f.label :joined %><br>
     <%= f.number_field :joined %>
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :status %><br>
     <%= f.text_field :status %>
