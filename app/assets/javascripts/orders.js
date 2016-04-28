@@ -11,7 +11,7 @@ function addFriendsFromGroup(){
 			if(response.user != null)
 				console.log(response.user);
 			else
-				console.log("sdgihggohcc");
+				console.alert("there in no user or group with the specidfied name");
 		},
 		error:function(err,status,error){
 			console.log(error);

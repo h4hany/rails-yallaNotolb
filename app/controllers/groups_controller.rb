@@ -4,11 +4,14 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def getUsers
-    gid = Group.find_by(gname: params[:str]).id
-    # render :json => {user: gid}
-    if gid > 0
-      ids = GroupUser.find_by(group_id: gid)
-      render :json => {user:ids}
+    group = Group.find_by(gname: params[:str])
+    if group.nil?
+      render :json => {user:false}
+    else
+      uids = GroupUser.where(group_id: group).select(:user_id)
+      users = Array.new
+      uids.each {|uid| users.push User.find(uid.user_id) }
+      render :json => {user:users}
     end
   end
 
