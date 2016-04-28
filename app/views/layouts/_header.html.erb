@@ -17,11 +17,11 @@
     <div class="top-nav">
       <div class="top-nav-left">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><%= link_to 'Home', root_path %></li>
+          <li><a href="about.html">Friends</a></li>
+          <li><a href="services.html">Groups</a></li>
+          <li><%= link_to 'Orders', ordrs_path %></li>
+          <li><%= link_to 'Signout', destroy_user_session_path, method: :delete %></li>
           <div class="clear"> </div>
         </ul>
       </div>

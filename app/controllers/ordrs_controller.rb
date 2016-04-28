@@ -25,7 +25,7 @@ class OrdrsController < ApplicationController
   # POST /ordrs.json
   def create
     @ordr = Ordr.new(ordr_params)
-
+    @ordr.user_id = current_user.id
     respond_to do |format|
       if @ordr.save
         format.html { redirect_to @ordr, notice: 'Ordr was successfully created.' }
