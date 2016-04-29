@@ -1,0 +1,59 @@
+<!---start-content---->
+
+<!---start-contact---->
+<div class="contact">
+  <div class="wrap">
+    <div class="section group">
+      <div class="col span_1_of_3">
+        <div class="contact_info">
+          <h3>Find Us Here</h3>
+          <div class="map">
+            <iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe>
+            <br>
+            <small>
+              <a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color:#666;text-align:left;font-size:0.85em">View
+                Larger Map</a></small>
+          </div>
+        </div>
+      </div>
+      <div class="col span_2_of_3">
+        <div class="contact-form">
+          <h2>Registartion</h2>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+              <div class="field">
+                <%= f.label :name %><br/>
+                <%= f.text_field :name, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :email %><br/>
+                <%= f.email_field :email, autofocus: true,class:"textbox" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br/>
+                <%= f.password_field :password, autocomplete: "off" ,class:"textbox"%>
+              </div>
+
+              <div class="field">
+                <%= f.label :password_confirmation %><br/>
+                <%= f.password_field :password_confirmation, autocomplete: "off" ,class:"textbox"%>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up" ,class:"mybutton"%>
+              </div>
+          <% end %>
+
+          <%= render "users/shared/links" %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
