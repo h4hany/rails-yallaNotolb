@@ -1,0 +1,31 @@
+class MenusController < ApplicationController
+   def index
+      @menus = Menu.all
+   end
+   
+   def new
+      @resume = Menu.new
+   end
+   
+   def create
+      @resume = Menu.new(resume_params)
+      
+      if @resume.save
+         redirect_to menus_path, notice: "The resume #{@resume.name} has been uploaded."
+      else
+         render "new"
+      end
+      
+   end
+   
+   def destroy
+      @resume = Resume.find(params[:id])
+      @resume.destroy
+      redirect_to menus_path, notice:  "The resume #{@resume.name} has been deleted."
+   end
+   
+   private
+      def resume_params
+      params.require(:resume).permit(:name, :attachment)
+   end
+end

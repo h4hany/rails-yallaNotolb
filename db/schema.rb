@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429110427) do
+ActiveRecord::Schema.define(version: 20160429213816) do
 
   create_table "friends", force: :cascade do |t|
     t.integer  "fid",        limit: 4
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20160429110427) do
   end
 
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
+
+  create_table "menus", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "attachment", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.boolean  "joined"
