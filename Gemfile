@@ -18,7 +18,8 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'devise'
 # gem 'devise-bootstrap-views'
 gem 'devise-bootstrap-views'
-
+# gem "font-awesome-rails"
+gem "font-awesome-rails"
 # gem 'bootstrap_form'
 gem 'bootstrap_form'
 # Use jquery as the JavaScript library
