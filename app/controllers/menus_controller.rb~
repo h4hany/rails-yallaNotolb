@@ -4,14 +4,14 @@ class MenusController < ApplicationController
    end
    
    def new
-      @resume = Menu.new
+      @menu = Menu.new
    end
    
    def create
-      @resume = Menu.new(resume_params)
+      @menu = Menu.new(menu_params)
       
-      if @resume.save
-         redirect_to menus_path, notice: "The resume #{@resume.name} has been uploaded."
+      if @menu.save
+         redirect_to menus_path, notice: "The menu #{@menu.name} has been uploaded."
       else
          render "new"
       end
@@ -19,13 +19,13 @@ class MenusController < ApplicationController
    end
    
    def destroy
-      @resume = Resume.find(params[:id])
-      @resume.destroy
-      redirect_to menus_path, notice:  "The resume #{@resume.name} has been deleted."
+      @menu = menu.find(params[:id])
+      @menu.destroy
+      redirect_to menus_path, notice:  "The menu #{@menu.name} has been deleted."
    end
    
    private
-      def resume_params
-      params.require(:resume).permit(:name, :attachment)
+      def menu_params
+      params.require(:menu).permit(:name, :attachment)
    end
 end

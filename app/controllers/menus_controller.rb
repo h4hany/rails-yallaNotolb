@@ -19,7 +19,7 @@ class MenusController < ApplicationController
    end
    
    def destroy
-      @menu = menu.find(params[:id])
+      @menu = Menu.find(params[:id])
       @menu.destroy
       redirect_to menus_path, notice:  "The menu #{@menu.name} has been deleted."
    end
