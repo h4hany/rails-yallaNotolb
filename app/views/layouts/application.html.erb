@@ -10,6 +10,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'orders', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'order_details', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -17,6 +18,33 @@
     $(function() {
       $('.gallery a').lightBox();
     });
+    function addOrderDetails(){
+      var item= $('#item').val();
+      var qty=$('#qty').val();
+      var price=$('#price').val();
+      var comment=$('#comment').val();
+      var url = "/order_details/addAjax";
+      $.ajax({
+        url:url,
+        method:'post',
+        data:{
+          "item": item,
+          "qty": qty,
+          "price": price,
+          "comment": comment
+        },
+        success:function(response){
+          console.log(response)
+        },
+        error:function(err,status,error){
+          console.log(error);
+        },
+        complete:function(complete){
+          console.log("complete");
+        },
+        dataType:'json'
+      });
+    }
   </script>
   <script type="text/javascript">
     jQuery(function(){
