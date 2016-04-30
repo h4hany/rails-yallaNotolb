@@ -1,4 +1,6 @@
 var users = [];
+var userIds = [];
+
 function getUserIndex(id){
 	for(var i = 0; i < users.length; i++){
 		if(users[i].id == id)
@@ -33,6 +35,7 @@ function insertUsers(users){
 		invited++;
 		$('#ordr_uids').val($('#ordr_uids').val()+","+users[i].id);
 	}
+	userIds = ($('#ordr_uids').val()).split(",");
 	$('#ordr_invited').val(invited);
 }
 function addFriendsFromGroup(){
@@ -47,9 +50,11 @@ function addFriendsFromGroup(){
 		success:function(response){
 			if(response.user != null){
 				for(var i = 0; i < response.user.length;i++){
-					users.push(response.user[i]);
+					if(getUserIndex(response.user[i].id) < 0){
+						users.push(response.user[i]);
+						insertUsers([response.user[i]]);
+					}
 				}
-				insertUsers(response.user);
 			}
 			else
 				console.log("there in no user or group with the specidfied name");
@@ -75,8 +80,10 @@ function addFriend(){
 		},
 		success:function(response){
 			if(response.user != null){
-				users.push(response.user)
-				insertUsers([response.user]);
+				if(getUserIndex(response.user.id) < 0){
+					users.push(response.user)
+					insertUsers([response.user]);
+				}
 			}
 			else
 				addFriendsFromGroup();
