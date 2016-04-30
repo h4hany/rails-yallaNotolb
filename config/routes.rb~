@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  get 'menus/index'
 
-  resources :menus 
+  get 'menus/new'
+
+  get 'menus/create'
+
+  get 'menus/destroy'
+
   resources :friends
   resources :group_users
   resources :order_details

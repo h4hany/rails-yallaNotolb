@@ -1,0 +1,36 @@
+<h1>Menus</h1>
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+
+<%= link_to "New Menu", new_menu_path, class: "btn btn-primary" %>
+<br />
+<br />
+
+<table class = "table table-bordered table-striped">
+   <thead>.
+      <tr>
+         <th>Name</th>
+         <th>Download Link</th>
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @menus.each do |menu| %>
+         
+         <tr>
+            <td><%= menu.name %></td>
+            <td><%= link_to "Download menu", menu.attachment_url %></td>
+            <td><%= button_to "Delete",  menu, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{menu.name}?" %></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
+
