@@ -4,10 +4,17 @@
       <div class="col span_2_of_3">
         <div class="contact-form">
           <h1>New Order</h1>
-
-          <%= render 'form' %>
-
           <%= link_to 'Back', ordrs_path,class:"btn mybutton" %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= render 'form' %>
+            </div>
+            <div id="users-container" class="wrap solid col-md-6">
+            </div>
+
+          </div>
+
+          
         </div>
       </div>
     </div>

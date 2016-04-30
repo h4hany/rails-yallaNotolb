@@ -28,6 +28,18 @@ class OrdrsController < ApplicationController
     @ordr.user_id = current_user.id
     respond_to do |format|
       if @ordr.save
+        uids = params[:ordr][:uids].split(',')
+        oid = @ordr.id
+        uids.each do |uid|
+          if !uid.empty?
+            noti = Notification.new
+            noti.joined = 0
+            noti.user_id = uid
+            noti.ordr_id = oid
+            noti.read = 0
+            noti.save
+          end
+        end
         format.html { redirect_to @ordr, notice: 'Ordr was successfully created.' }
         format.json { render :show, status: :created, location: @ordr }
       else

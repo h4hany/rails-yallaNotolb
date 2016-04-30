@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field form-group">
-    <%= select_tag "count", "<option value='Breakfast'>Breakfast</option><option value='Dinner'>Dinner</option><option value='Lunch'>Lunch</option>".html_safe ,class:"form-control"%>
+    <%= f.select :otype, "<option value='Breakfast'>Breakfast</option><option value='Dinner'>Dinner</option><option value='Lunch'>Lunch</option>".html_safe ,class:"form-control"%>
   </div>
   <div class="field form-group">
     <%= f.label "Resturant name" %><br>
@@ -27,7 +27,9 @@
     <%= f.text_field :virtual_attribute ,class:"mytext form-control"%>
     <a href="#" class="btn btn-success" onclick="addFriend()" style="color: #121D12">Add friend</a>
   </div>
-<div class="field form-group">
+  <%= f.hidden_field :invited,value:"0" %>
+  <%= f.hidden_field :uids %>
+  <!-- <div class="field form-group">
     <%= f.label :invited %><br>
     <%= f.number_field :invited ,class:"mytext form-control"%>
   </div> 
@@ -42,8 +44,8 @@
   <div class="field form-group">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
-  </div> 
+  </div> --> 
   <div class="actions">
-    <%= f.submit "Add Order",class:"mybutton btn"%>
+    <%= f.button "Add Order",class:"mybutton btn",onclick:"addOrder()"%>
   </div>
 <% end %>
