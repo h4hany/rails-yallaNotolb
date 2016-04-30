@@ -1,4 +1,4 @@
-<%= form_for(@ordr) do |f| %>
+<%= form_for(@ordr,:html => {:multipart => true}) do |f| %>
   <% if @ordr.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ordr.errors.count, "error") %> prohibited this ordr from being saved:</h2>
@@ -11,40 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Order for"  %><br>
-    <%= f.text_field :otype %>
+  <div class="field form-group">
+    <%= select_tag "count", "<option value='Breakfast'>Breakfast</option><option value='Dinner'>Dinner</option><option value='Lunch'>Lunch</option>".html_safe ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label "Resturant name" %><br>
-    <%= f.text_field :ofrom %>
+    <%= f.text_field :ofrom ,class:"mytext form-control"%>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :menu %><br>
-    <%= f.text_field :menu %>
+    <%= f.file_field :menu %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label "Friend/Group" %><br>
-    <%= f.text_field :virtual_attribute %>
-    <a href="#" class="btn btn-success" onclick="addFriend()">Add friend</a>
+    <%= f.text_field :virtual_attribute ,class:"mytext form-control"%>
+    <a href="#" class="btn btn-success" onclick="addFriend()" style="color: #121D12">Add friend</a>
   </div>
-  <!-- <div class="field">
+<div class="field form-group">
     <%= f.label :invited %><br>
-    <%= f.number_field :invited %>
-  </div> -->
-  <!-- <div class="field">
+    <%= f.number_field :invited ,class:"mytext form-control"%>
+  </div> 
+   <div class="field form-group">
     <%= f.label :joined %><br>
-    <%= f.number_field :joined %>
-  </div> -->
-  <div class="field">
+    <%= f.number_field :joined,class:"mytext form-control" %>
+  </div> 
+  <div class="field form-group">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.text_field :status,class:"mytext form-control" %>
   </div>
-  <!-- <div class="field">
+  <div class="field form-group">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
-  </div> -->
+  </div> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Order",class:"mybutton btn"%>
   </div>
 <% end %>
