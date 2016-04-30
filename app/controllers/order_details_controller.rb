@@ -12,6 +12,16 @@ class OrderDetailsController < ApplicationController
   def show
   end
 
+  def addAjax
+    item = params[:item]
+    price=params[:price]
+    qty=params[:qty]
+    comment=params[:comment]
+    @order_detail = OrderDetail.new(params.require(:order_detail).permit(item, price, qty, comment, '1'))
+    @order_detail.save
+    render :json => {order:@order_detail}
+  end
+
   # GET /order_details/new
   def new
     @order_detail = OrderDetail.new
@@ -62,13 +72,13 @@ class OrderDetailsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order_detail
-      @order_detail = OrderDetail.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order_detail
+    @order_detail = OrderDetail.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_detail_params
-      params.require(:order_detail).permit(:item, :qty, :price, :comment, :notification_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_detail_params
+    params.require(:order_detail).permit(:item, :qty, :price, :comment, :notification_id)
+  end
 end
