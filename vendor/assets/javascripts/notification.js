@@ -68,7 +68,7 @@ init_notifications_lookup = function(){
 				$("#UnSeenNotifications").hide();
 			}
 	          newHolder += '<li role="presentation" class="divider"></li>';
-	          newHolder += '<li role="presentation"><a href="/allNotifications/'+currentUserId+'">show all notifications</a></li>'
+	          newHolder += '<li role="presentation"><a href="/notifications/'+currentUserId+'">show all notifications</a></li>'
 	          $("#notifications").html(newHolder);
 	          //holder.innerHTML = newHolder;       
 
