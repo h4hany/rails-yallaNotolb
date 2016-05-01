@@ -1,6 +1,6 @@
 class OrderDetailsController < ApplicationController
-  before_action  only: [:show, :edit, :update, :destroy,:addajax]
-#:set_order_detail,
+  before_action  :set_order_detail,only: [:show, :edit, :update, :destroy,:addajax]
+#
   # GET /order_details
   # GET /order_details.json
   def index
@@ -42,7 +42,6 @@ class OrderDetailsController < ApplicationController
   # POST /order_details.json
   def create
     @order_detail = OrderDetail.new(order_detail_params)
-
     respond_to do |format|
       if @order_detail.save
         format.html { redirect_to @order_detail, notice: 'Order detail was successfully created.' }
@@ -80,9 +79,9 @@ class OrderDetailsController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  # def set_order_detail
-  #   @order_detail = OrderDetail.find(params[:id])
-  # end
+  def set_order_detail
+    @order_detail = OrderDetail.find(params[:id])
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_detail_params
