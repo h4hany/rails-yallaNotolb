@@ -3,4 +3,5 @@ class Ordr < ActiveRecord::Base
   attr_accessor :virtual_attribute
   attr_accessor :uids
   belongs_to :user
+  has_many :notifications
 end

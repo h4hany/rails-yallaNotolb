@@ -15,9 +15,6 @@
   <%= javascript_include_tag 'orders', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'groups', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'order_details', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "entangled-js.js" %>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="../../assets/javascripts/groups.js"></script>
