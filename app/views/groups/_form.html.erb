@@ -13,13 +13,19 @@
 
   <div class="field">
     <%= f.label :gname %><br>
-    <%= f.text_field :gname %>
+    <%= f.text_field :gname,class:"mytext form-control" %>
   </div>
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
+  </div> -->
+  <div class="field form-group">
+    <%= f.label "Friend" %><br>
+    <%= f.text_field :virtual_attribute ,class:"mytext form-control"%>
+    <a href="#" class="btn btn-success" onclick="addUser()" style="color: #121D12">Add friend</a>
   </div>
+  <%= f.hidden_field :uids %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create group",class:"mybutton btn" %>
   </div>
 <% end %>
