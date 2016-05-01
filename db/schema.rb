@@ -50,12 +50,11 @@ ActiveRecord::Schema.define(version: 20160501112513) do
 
   create_table "notifications", force: :cascade do |t|
     t.boolean  "joined"
-    t.integer  "user_id",     limit: 4
-    t.integer  "ordr_id",     limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "user_id",    limit: 4
+    t.integer  "ordr_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.boolean  "read"
-    t.integer  "reciever_id", limit: 4
     t.boolean  "seen"
   end
 
