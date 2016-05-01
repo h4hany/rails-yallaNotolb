@@ -1,24 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require jquery.min
-//= require jquery.lightbox
-//= require jquery.easing.1.3
-//= require camera.min
-//= require_tree .
-
 var friends = [];
 var friendIds = [];
 
@@ -52,7 +31,7 @@ function insertFriends(friends){
 
 	for(var i = 0;i < friends.length;i++){
 		elm = "<div id=" + friends[i].id + " class='row'><h3>" + friends[i].email + "</h3>&nbsp;<a href='#' onclick='removeUser("+friends[i].id+")'><i class='fa fa-times'></i></a></div>";
-		$('#users-container').append(elm);
+		$('#friends-container').append(elm);
 		// invited++;
 		$('#group_uids').val($('#group_uids').val()+","+friends[i].id);
 	}
@@ -93,7 +72,7 @@ function insertFriends(friends){
 function addUser(){
 	var val = $('#group_virtual_attribute').val();
 	console.log("hey")
-	var url = "/user/getFriendId";
+	var url = "/user/getId";
 	$.ajax({
 		url:url,
 		method:'post',
@@ -102,8 +81,7 @@ function addUser(){
 		},
 		success:function(response){
 			if(response.user != null){
-				console.log(getElementIndex(friends,response.user.id));
-				if(getElementIndex(friends,response.user.id) < 0){
+				if(getElementIndex(response.user.id) < 0){
 					friends.push(response.user)
 					insertFriends([response.user]);
 				}
