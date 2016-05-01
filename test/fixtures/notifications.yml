@@ -2,10 +2,16 @@
 
 one:
   joined: false
+  read: false
+  seen: false
+  reciever_id: 1
   user_id: 
   ordr_id: 
 
 two:
   joined: false
+  read: false
+  seen: false
+  reciever_id: 1
   user_id: 
   ordr_id: 

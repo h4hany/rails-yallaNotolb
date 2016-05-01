@@ -33,10 +33,12 @@ class OrdrsController < ApplicationController
         uids.each do |uid|
           if !uid.empty?
             noti = Notification.new
-            noti.joined = 0
-            noti.user_id = uid
+            noti.user_id = (Ordr.find(oid)).user_id
+            noti.reciever_id = uid
             noti.ordr_id = oid
             noti.read = 0
+            noti.joined = 0
+            noti.seen = 0
             noti.save
           end
         end
