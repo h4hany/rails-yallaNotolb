@@ -2,12 +2,15 @@
 <html>
 <head>
   <style>
-  div.solid {border-style: solid;border-width:5px;}
+    div.solid {
+      border-style: solid;
+      border-width: 5px;
+    }
   </style>
   <script>
   </script>
   <title>Yalanotlob</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'orders', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'order_details', 'data-turbolinks-track' => true %>
@@ -15,39 +18,42 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
   <script type="text/javascript">
-    $(function() {
+    $(function () {
       $('.gallery a').lightBox();
     });
-    function addOrderDetails(){
-      var item= $('#item').val();
-      var qty=$('#qty').val();
-      var price=$('#price').val();
-      var comment=$('#comment').val();
-      var url = "/order_details/addAjax";
+    function addOrderDetails() {
+      var item = $('#order_detail_item').val();
+      var qty = $('#order_detail_qty').val();
+      var price = $('#order_detail_price').val();
+      var comment = $('#order_detail_comment').val();
+      var url = "/order_details/addajax";
       $.ajax({
-        url:url,
-        method:'post',
-        data:{
-          "item": item,
-          "qty": qty,
-          "price": price,
-          "comment": comment
+        url: url,
+        method: 'post',
+        data: {
+          "order_details": {
+            "item": item,
+            "qty": qty,
+            "price": price,
+            "comment": comment
+          }
+
         },
-        success:function(response){
+        success: function (response) {
           console.log(response)
         },
-        error:function(err,status,error){
+        error: function (err, status, error) {
           console.log(error);
         },
-        complete:function(complete){
+        complete: function (complete) {
           console.log("complete");
         },
-        dataType:'json'
+        dataType: 'json'
       });
     }
   </script>
   <script type="text/javascript">
-    jQuery(function(){
+    jQuery(function () {
       jQuery('#camera_wrap_1').camera({
         pagination: false,
       });

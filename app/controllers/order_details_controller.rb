@@ -1,6 +1,6 @@
 class OrderDetailsController < ApplicationController
-  before_action :set_order_detail, only: [:show, :edit, :update, :destroy]
-
+  before_action  only: [:show, :edit, :update, :destroy,:addajax]
+#:set_order_detail,
   # GET /order_details
   # GET /order_details.json
   def index
@@ -12,14 +12,21 @@ class OrderDetailsController < ApplicationController
   def show
   end
 
-  def addAjax
-    item = params[:item]
-    price=params[:price]
-    qty=params[:qty]
-    comment=params[:comment]
-    @order_detail = OrderDetail.new(params.require(:order_detail).permit(item, price, qty, comment, '1'))
+  def addajax
+    item = params[:order_details][:item]
+    price=params[:order_details][:price]
+    qty=params[:order_details][:qty]
+    comment=params[:order_details][:comment]
+    puts params[:order_details]
+    @order_detail = OrderDetail.new
+    @order_detail.id='1'
+    @order_detail.item=item
+    @order_detail.price=price
+    @order_detail.qty=qty
+    @order_detail.comment=comment
+    @order_detail.notification_id='1'
     @order_detail.save
-    render :json => {order:@order_detail}
+    #render :json => {order: @order_detail}
   end
 
   # GET /order_details/new
@@ -73,9 +80,9 @@ class OrderDetailsController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_order_detail
-    @order_detail = OrderDetail.find(params[:id])
-  end
+  # def set_order_detail
+  #   @order_detail = OrderDetail.find(params[:id])
+  # end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_detail_params
