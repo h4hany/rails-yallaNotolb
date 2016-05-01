@@ -39,6 +39,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.6)
       execjs
+    awrence (0.1.0)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -69,6 +70,12 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-bootstrap-views (0.0.8)
+    entangled (1.5.0)
+      awrence (~> 0.1)
+      plissken (~> 0.2)
+      rails (~> 4.0)
+      redis (~> 3.2)
+      tubesock (~> 0.2)
     erubis (2.7.0)
     execjs (2.6.0)
     font-awesome-rails (4.6.1.0)
@@ -98,6 +105,9 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    plissken (0.2.0)
+      symbolize (~> 4.2)
+    puma (3.4.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -128,6 +138,7 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    redis (3.3.0)
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.22)
@@ -148,9 +159,16 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    symbolize (4.5.2)
+      activemodel (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
+      i18n
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
+    tubesock (0.2.7)
+      rack (>= 1.5.0)
+      websocket (>= 1.1.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -164,6 +182,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    websocket (1.2.3)
 
 PLATFORMS
   ruby
@@ -176,10 +195,12 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-bootstrap-views
+  entangled
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (>= 0.3.13, < 0.5)
+  puma
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

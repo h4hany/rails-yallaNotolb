@@ -71,7 +71,7 @@ function addFriendsFromGroup(){
 
 function addFriend(){
 	var val = $('#ordr_virtual_attribute').val();
-	var url = "/user/getId";
+	var url = "/user/getFriendId";
 	$.ajax({
 		url:url,
 		method:'post',

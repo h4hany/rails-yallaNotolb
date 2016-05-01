@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :friends
   resources :group_users
   resources :order_details
-  resources :notifications
+  #resources :notifications
   resources :ordrs
   resources :groups
   devise_for :users
@@ -20,7 +20,21 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get 'user/getId' => 'user#getUserId'
   get 'order_details/addajax' => 'order_details#addajax'
+  get '/user/getFriendId' => 'user#getFriendId'
   get 'group/getUsers' => 'groups#getUsers'
+
+
+
+  sockets_for :notifications , only: [:show]
+  
+  sockets_for :users do
+    sockets_for :notifications
+  end
+
+
+  get 'menuNotifications/:id', to: 'notifications#html_index'
+  get 'notifications/:id/clear' , to: 'notifications#all_notification'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
