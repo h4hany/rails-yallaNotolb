@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="top-header">
       <div class="logo">
-        <a href="index.html"><%= image_tag("logo2.png", width: "250px") %></a>
+        <%= image_tag("logo2.png", width: "250px") %>
       </div>
       <div class="social-icons">
         <ul>
@@ -15,12 +15,15 @@
       </div>
 
       <div class="clear"></div>
+      <div class="" style="float: right;margin-right: -10%;margin-top:1%;">
+        <%= image_tag(current_user.image.url, size: "82x82", class: "img-rounded") %>
+        &nbsp;
+        <%= link_to current_user.name, edit_user_registration_path , {style:'color:white;a:hover {
+  color: #CCCCCC;
+}'}%>
+      </div>
     </div>
-    <div class="" style="float: right;color: white">
-      <%= image_tag(current_user.image.url, size: "50x50", class: "img-thumbnail") %>
 
-      <%= link_to current_user.name, edit_user_registration_path ,html: {color: 'white'}%>
-    </div>
     <!---start-top-nav---->
     <div class="top-nav">
       <div class="top-nav-left">
