@@ -50,14 +50,6 @@ ActiveRecord::Schema.define(version: 20160502170552) do
 
   create_table "notifications", force: :cascade do |t|
     t.boolean  "joined"
-<<<<<<< HEAD
-    t.integer  "user_id",    limit: 4
-    t.integer  "ordr_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.boolean  "read"
-    t.boolean  "seen"
-=======
     t.boolean  "read"
     t.boolean  "seen"
     t.integer  "reciever_id", limit: 4
@@ -65,7 +57,6 @@ ActiveRecord::Schema.define(version: 20160502170552) do
     t.integer  "ordr_id",     limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
->>>>>>> bf5b706a38f16da739463c2f353dbe57086cab7e
   end
 
   add_index "notifications", ["ordr_id"], name: "index_notifications_on_ordr_id", using: :btree
