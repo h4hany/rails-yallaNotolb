@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430152625) do
+ActiveRecord::Schema.define(version: 20160501112513) do
 
   create_table "friends", force: :cascade do |t|
     t.integer  "fid",        limit: 4
@@ -50,11 +50,13 @@ ActiveRecord::Schema.define(version: 20160430152625) do
 
   create_table "notifications", force: :cascade do |t|
     t.boolean  "joined"
-    t.integer  "user_id",    limit: 4
-    t.integer  "ordr_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "user_id",     limit: 4
+    t.integer  "ordr_id",     limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.boolean  "read"
+    t.integer  "reciever_id", limit: 4
+    t.boolean  "seen"
   end
 
   add_index "notifications", ["ordr_id"], name: "index_notifications_on_ordr_id", using: :btree

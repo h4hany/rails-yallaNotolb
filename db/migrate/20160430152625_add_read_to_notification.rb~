@@ -1,6 +1,7 @@
 class AddReadToNotification < ActiveRecord::Migration
   def change
     add_column :notifications, :read, :boolean
-
+    add_column :notifications, :seen, :boolean
+    add_column :notifications, :reciever_id, :boolean
   end
 end
