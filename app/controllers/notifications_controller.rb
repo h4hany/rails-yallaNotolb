@@ -25,23 +25,19 @@ class NotificationsController < ApplicationController
 
  
 
-  def html_index
-      @notifications = Notification.where(reciever_id: params[:id])
+  def all_notification
+      @notifications = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id])
+
+@rrr = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id]).update_all( :seen => true  )
 
   end
 
   def create
     broadcast do
-      #@child = Notification.new(child_params)
-      #@child.parent_id = params[:parent_id]
-      #@child.save
+@rrr = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id]).update_all( :seen => true  )
     end
   end
 
-  def all_notification
-    Notification.where(:reciever_id => params[:id]).update_all( :seen => true  )
-    
-  end
 
 
   def show

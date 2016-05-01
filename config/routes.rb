@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'group/getUsers' => 'groups#getUsers'
 
 
+  get 'notifications/:id/clear', to: 'notifications#all_notification'
 
   sockets_for :notifications , only: [:show]
   
@@ -32,8 +33,7 @@ Rails.application.routes.draw do
   end
 
 
-  get 'menuNotifications/:id', to: 'notifications#html_index'
-  get 'notifications/:id/clear' , to: 'notifications#all_notification'
+  #get 'notifications/:id/clear' , to: 'notifications#all_notification'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
