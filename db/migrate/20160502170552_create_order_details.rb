@@ -6,7 +6,6 @@ class CreateOrderDetails < ActiveRecord::Migration
       t.integer :price
       t.string :comment
       t.references :notification, index: true, foreign_key: true
-
       t.timestamps null: false
     end
   end

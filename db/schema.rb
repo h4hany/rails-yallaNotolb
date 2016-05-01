@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501154455) do
+ActiveRecord::Schema.define(version: 20160502170552) do
 
   create_table "friends", force: :cascade do |t|
     t.integer  "fid",        limit: 4
@@ -114,5 +114,6 @@ ActiveRecord::Schema.define(version: 20160501154455) do
   add_foreign_key "groups", "users"
   add_foreign_key "notifications", "ordrs"
   add_foreign_key "notifications", "users"
+  add_foreign_key "order_details", "notifications"
   add_foreign_key "ordrs", "users"
 end

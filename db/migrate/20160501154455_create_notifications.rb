@@ -7,7 +7,6 @@ class CreateNotifications < ActiveRecord::Migration
       t.integer :reciever_id
       t.references :user, index: true, foreign_key: true
       t.references :ordr, index: true, foreign_key: true
-
       t.timestamps null: false
     end
   end

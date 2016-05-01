@@ -17,7 +17,7 @@ class OrderDetailsController < ApplicationController
     price=params[:order_details][:price]
     qty=params[:order_details][:qty]
     comment=params[:order_details][:comment]
-    puts params[:order_details]
+    render plain: params[:order_details].inspect
     @order_detail = OrderDetail.new
     @order_detail.id='1'
     @order_detail.item=item
