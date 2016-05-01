@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+  <% if user_signed_in? %>
+    <script type="text/javascript">
+        var currentUserId = "<%= current_user.id %>"
+    </script>
+  <% end %>
   <style>
     div.solid {
       border-style: solid;
@@ -20,10 +27,10 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="../../assets/javascripts/groups.js"></script>
+  <!-- <script type="text/javascript" src="../../assets/javascripts/groups.js"></script>-->
   <script type="text/javascript">
     $(function () {
-      $('.gallery a').lightBox();
+     // $('.gallery a').lightBox();
     });
     function addOrderDetails() {
       var item = $('#order_detail_item').val();
@@ -57,12 +64,14 @@
     }
   </script>
   <script type="text/javascript">
-    jQuery(function () {
+   /* jQuery(function () {
       jQuery('#camera_wrap_1').camera({
         pagination: false,
       });
-    });
+    });*/
   </script>
+    <%= javascript_include_tag "notification.js" %>
+
 </head>
 <body>
 <%= render "layouts/header" %>

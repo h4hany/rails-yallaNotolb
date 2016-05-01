@@ -17,6 +17,7 @@
       <div class="clear"></div>
       <div class="" style="float: right;margin-right: -10%;margin-top:1%;">
         <% if user_signed_in? %>
+
         <%= image_tag(current_user.image.url, size: "82x82", class: "img-rounded") %>
         &nbsp;
         <%= link_to current_user.name, edit_user_registration_path , {style:'color:white;a:hover {
@@ -43,11 +44,10 @@
 
 <% if user_signed_in? %>
 <div class="dropdown">
+          <li id="UnSeenNotifications" style="color:red;"></li>
     <button style="background:#bd7f1c" class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><i class="fa fa-bell-o fa-2x"></i></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="notifications">
-      <!-- <li onclick="readNotification('2','1')" class="notif dark">Notficiation</li>-->
-      <li role="presentation" class="divider"></li>
-      <li role="presentation"><a href="/allNotifications/5">show all notifications</a></li>
+
     </ul>
   </div>
 

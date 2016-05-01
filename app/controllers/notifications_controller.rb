@@ -9,7 +9,7 @@ class NotificationsController < ApplicationController
 #@notifications = Notification.joins(:user).where(reciever_id: params[:user_id]).first
 #@notifications = Notification.joins(:ordr,:user)
 @notifications = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id])#.update_all( :seen => true  )
-@rrr = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id]).update_all( :seen => true  )
+#@rrr = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id]).update_all( :seen => true  )
 
 #"user_id = ? or reciever_id = ?",params[:user_id]
 #"(first_name = ? and last_name = ?) or reciever_id = ?",fname,lname,email
