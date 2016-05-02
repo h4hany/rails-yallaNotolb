@@ -1,4 +1,6 @@
 class GroupUsersController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_group_user, only: [:show, :edit, :update, :destroy]
 
   # GET /group_users

@@ -1,4 +1,6 @@
 class OrderDetailsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action  :set_order_detail,only: [:show, :edit, :update, :destroy,:addajax]
 #
   # GET /order_details
