@@ -43,7 +43,7 @@ function addFriendsFromGroup(){
 	var url = "/group/getUsers";
 	$.ajax({
 		url:url,
-		method:'post',
+		method:'GET',
 		data:{
 			"str": val
 		},
@@ -74,7 +74,7 @@ function addFriend(){
 	var url = "/user/getFriendId";
 	$.ajax({
 		url:url,
-		method:'post',
+		method:'GET',
 		data:{
 			"str": val
 		},
