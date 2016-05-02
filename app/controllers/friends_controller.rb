@@ -34,21 +34,14 @@ class FriendsController < ApplicationController
     @fid = params[:friend][:fid]
     user = User.find_by(email: @fid).id
     if user_signed_in?  
-    @friend.user_id=current_user.id
-    @friend.fid= user
-    @friend.save()
-    redirect_to @friend
-  end
- # @friend = Friend.new(friend_params)
-  #  respond_to do |format|
-    #  if @friend.save
-     #   format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
-      #  format.json { render :show, status: :created, location: @friend }
-      #else
-       # format.html { render :new }
-        #format.json { render json: @friend.errors, status: :unprocessable_entity }
-      #end
-    #end
+      @friend.user_id=current_user.id
+      @friend.fid= user
+      @friend.save()
+      redirect_to @friend
+    else  
+      flash[:notice] = "please login before add friends"
+      redirect_to new_user_session_url
+    end
   end
 
   # PATCH/PUT /friends/1
