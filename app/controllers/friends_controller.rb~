@@ -1,66 +1,60 @@
 class FriendsController < ApplicationController
+<<<<<<< HEAD
 before_filter :authenticate_user!
-  # GET /friends
-  # GET /friends.json
+
   def index
     @friends = User.all
    
     respond_to do |format|
       format.html
-      format.json { render json: @friends }
+      format.json {render :action=>"index"}#{ render json: @friends }
+      format.js {render :action=>"index"}
     end
   end
 
 
   def newfriend
     @email = params[:user][:email]
-    puts "***********************" + @email.inspect + "*****************************"
-    # Rails.logg
-
-    if @email!=""
-
-    # puts "***********************" + @email + "*****************************"
-     @user = User.find_by_email(@email)
+  if @email!=""
+   @user = User.find_by_email(@email)
      if @user!= nil
-      current_user.follow(@user)
-      redirect_to friends_path
+        current_user.follow(@user)
+        flash[:success] = "Your friend"+@user.name+" had been added succefully"
+        @beforeAddFriend = Friend.find_by(fid: @user.id, user_id: current_user.id)
+          if @beforeAddFriend == nil
+              object = Friend.new(:fid => @user.id, :user_id => current_user.id)
+              object.save
+          end
+        redirect_to friends_path 
     else
+        flash[:error] = "No User with entered Email..."
         redirect_to friends_path
    end 
    else
-     redirect_to friends_path {"error "}
+      flash[:error] = "Please Entere Value..."
+      redirect_to friends_path
     end
-
-
   end
   
-
-  def addfriend
-    unless current_user.id == params[:id]
-    @user = User.find(params[:id])
-    current_user.follow(@user)
-    respond_to do |format|
-      format.js {render :action=>"addfriend"}
-    end
-   end
-
-  end
-
 
   def unfriend
     @user = User.find(params[:id])
     current_user.stop_following(@user)
-#    respond_to do |format|
-
-  #    format.js {render :action=>"unfriend"}
- # end
-
+      @beforeAddFriend = Friend.find_by(fid: params[:id], user_id: current_user.id)
+          if @beforeAddFriend != nil
+                  Friend.find_by(fid: params[:id], user_id: current_user.id).destroy
+          end
+    redirect_to friends_path(format: :js)
  end
 
  end
 
 =begin
 class FriendsController < ApplicationController
+=======
+  before_action :authenticate_user!
+
+>>>>>>> 61ec804dc5ed28b9b5d4c2592b47b13561274cd1
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
   # GET /friends
@@ -94,21 +88,14 @@ class FriendsController < ApplicationController
     @fid = params[:friend][:fid]
     user = User.find_by(email: @fid).id
     if user_signed_in?  
-    @friend.user_id=current_user.id
-    @friend.fid= user
-    @friend.save()
-    redirect_to @friend
-  end
- # @friend = Friend.new(friend_params)
-  #  respond_to do |format|
-    #  if @friend.save
-     #   format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
-      #  format.json { render :show, status: :created, location: @friend }
-      #else
-       # format.html { render :new }
-        #format.json { render json: @friend.errors, status: :unprocessable_entity }
-      #end
-    #end
+      @friend.user_id=current_user.id
+      @friend.fid= user
+      @friend.save()
+      redirect_to @friend
+    else  
+      flash[:notice] = "please login before add friends"
+      redirect_to new_user_session_url
+    end
   end
 
   # PATCH/PUT /friends/1

@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-<<<<<<< HEAD
+
 before_filter :authenticate_user!
 
   def index
