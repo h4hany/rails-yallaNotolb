@@ -9,10 +9,12 @@
               <div class="wrap solid">
                 <h1>Latest Orders</h1>
                 <ul>
-                  <% @orders.each do |order|%>
-                      <h6><li>
-                        <%= link_to order.otype, order %>&nbsp;on&nbsp;<%= order.created_at%>
-                      </li></h6>
+                  <% @orders.each do |order| %>
+                      <h6>
+                        <li>
+                          <%= link_to order.otype, order %>&nbsp;on&nbsp;<%= order.created_at %>
+                        </li>
+                      </h6>
 
                   <% end %>
                 </ul>

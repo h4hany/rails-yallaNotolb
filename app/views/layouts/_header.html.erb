@@ -18,14 +18,14 @@
       <div class="" style="float: right;margin-right: -10%;margin-top:1%;">
         <% if user_signed_in? %>
 
-       <!-- <%= image_tag(current_user.image.url, size: "82x82", class: "img-rounded") %>
+            <!-- <%= image_tag(current_user.image.url, size: '82x82', class: 'img-rounded') %>
         &nbsp;
-        <%= link_to current_user.name, edit_user_registration_path , {style:'color:white;a:hover {
+        <%= link_to current_user.name, edit_user_registration_path, {style: 'color:white;a:hover {
   color: #ffffff;
-}'}%>
+}'} %>
 -->
 
-<% end %>
+        <% end %>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
     <div class="top-nav">
       <div class="top-nav-left">
         <ul>
-          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Home', home_index_path %></li>
           <li><%= link_to 'Friends', friends_path %></li>
           <li><%= link_to 'Groups', groups_path %></li>
           <li><%= link_to 'Orders', ordrs_path %></li>
@@ -42,8 +42,8 @@
           <% if user_signed_in? %>
               <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
 
-        <% else %>
-              <li><%= link_to 'Sign in',  new_user_session_path%></li>
+          <% else %>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
 
           <% end %>
           <div class="clear"></div>
@@ -51,18 +51,19 @@
       </div>
       <div class="top-nav-right">
 
-<% if user_signed_in? %>
+        <% if user_signed_in? %>
 <span class="dropdown" onclick="openAllNotifications()">
           <li id="UnSeenNotifications" style="color:red;display: none;"></li>
-    <button style="background:#bd7f1c" class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><i class="fa fa-bell-o fa-2x"></i></button>
+    <button style="background:#bd7f1c" class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+      <i class="fa fa-bell-o fa-2x"></i></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="notifications">
 
     </ul>
   </span>
 
-          <%= image_tag(current_user.image.url, size: "52x52", class: "img-rounded") %>
+            <%= image_tag(current_user.image.url, size: "52x52", class: "img-rounded") %>
 
-<span class="dropdown">
+            <span class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
           <ul class="dropdown-menu" role="menu">
             <li><%= link_to 'Profile', edit_user_registration_path %></li>
@@ -71,12 +72,12 @@
           </ul>
             </span>
 
-<% end %>
+        <% end %>
 
 
-   <!--      <form>
-          <input type="text"><input type="submit" value=""/>
-        </form> -->
+        <!--      <form>
+               <input type="text"><input type="submit" value=""/>
+             </form> -->
       </div>
       <div class="clear"></div>
 
