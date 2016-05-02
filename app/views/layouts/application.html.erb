@@ -17,58 +17,29 @@
   <script>
   </script>
   <title>Yalanotlob</title>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'orders', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'groups', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'order_details', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "entangled-js.js" %>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <!-- <script type="text/javascript" src="../../assets/javascripts/groups.js"></script>-->
   <script type="text/javascript">
-    $(function () {
-     // $('.gallery a').lightBox();
+    $(function() {
+      $('.gallery a').lightBox();
     });
-    function addOrderDetails() {
-      var item = $('#order_detail_item').val();
-      var qty = $('#order_detail_qty').val();
-      var price = $('#order_detail_price').val();
-      var comment = $('#order_detail_comment').val();
-      var url = "/order_details/addajax";
-      $.ajax({
-        url: url,
-        method: 'post',
-        data: {
-          "order_details": {
-            "item": item,
-            "qty": qty,
-            "price": price,
-            "comment": comment
-          }
-
-        },
-        success: function (response) {
-          console.log(response)
-        },
-        error: function (err, status, error) {
-          console.log(error);
-        },
-        complete: function (complete) {
-          console.log("complete");
-        },
-        dataType: 'json'
-      });
-    }
   </script>
   <script type="text/javascript">
-   /* jQuery(function () {
+    jQuery(function(){
       jQuery('#camera_wrap_1').camera({
         pagination: false,
       });
-    });*/
+    });
   </script>
     <%= javascript_include_tag "notification.js" %>
 
