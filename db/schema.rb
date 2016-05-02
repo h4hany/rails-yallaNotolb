@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502170552) do
+ActiveRecord::Schema.define(version: 20160502170554) do
 
   create_table "friends", force: :cascade do |t|
     t.integer  "fid",        limit: 4
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 20160502170552) do
     t.datetime "updated_at",                                      null: false
     t.string   "name",                   limit: 255
     t.string   "image",                  limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
