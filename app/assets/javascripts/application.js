@@ -11,11 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.min
+//= require jquery.easing.1.3
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.min
 //= require jquery.lightbox
-//= require jquery.easing.1.3
 //= require camera.min
 //= require_tree .
 
@@ -96,7 +97,11 @@ function addUser(){
 	var url = "/user/getFriendId";
 	$.ajax({
 		url:url,
+<<<<<<< HEAD
 		method:'get',
+=======
+		method:'GET',
+>>>>>>> 61ec804dc5ed28b9b5d4c2592b47b13561274cd1
 		data:{
 			"str": val
 		},

@@ -1,4 +1,5 @@
 class FriendsController < ApplicationController
+<<<<<<< HEAD
 before_filter :authenticate_user!
 
   def index
@@ -50,6 +51,10 @@ before_filter :authenticate_user!
 
 =begin
 class FriendsController < ApplicationController
+=======
+  before_action :authenticate_user!
+
+>>>>>>> 61ec804dc5ed28b9b5d4c2592b47b13561274cd1
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
   # GET /friends
@@ -83,21 +88,14 @@ class FriendsController < ApplicationController
     @fid = params[:friend][:fid]
     user = User.find_by(email: @fid).id
     if user_signed_in?  
-    @friend.user_id=current_user.id
-    @friend.fid= user
-    @friend.save()
-    redirect_to @friend
-  end
- # @friend = Friend.new(friend_params)
-  #  respond_to do |format|
-    #  if @friend.save
-     #   format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
-      #  format.json { render :show, status: :created, location: @friend }
-      #else
-       # format.html { render :new }
-        #format.json { render json: @friend.errors, status: :unprocessable_entity }
-      #end
-    #end
+      @friend.user_id=current_user.id
+      @friend.fid= user
+      @friend.save()
+      redirect_to @friend
+    else  
+      flash[:notice] = "please login before add friends"
+      redirect_to new_user_session_url
+    end
   end
 
   # PATCH/PUT /friends/1

@@ -1,7 +1,6 @@
-
 <!--start-image-slider---->
 
-<!-- <div class="slider">
+<div class="slider">
   <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
     <div data-src="<%= image_path("slider1.jpg")%>"> </div>
     <div data-src="<%= image_path("slider2.jpg")%>">  </div>
@@ -10,11 +9,12 @@
 
   </div>
   <div class="clear"> </div>
-</div> -->
+</div>
 <!--End-image-slider---->
 <!---start-content---->
+
 <div class="content">
-  <!--<div class="top-grids">
+  <div class="top-grids">
     <div class="wrap">
       <div class="top-grid">
         <a href="#"><%= image_tag("icon1.png") %></a>
@@ -31,32 +31,22 @@
       <div class="top-grid last-topgrid">
         <a href="#"><%= image_tag("icon3.png") %></a>
         <h3>Location</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <p>information technology institute Nozha Branch</p>
         <a class="button" href="contact.html">Read More</a>
       </div>
       <div class="clear"> </div>
     </div>
-  </div> -->
-  <div class="mid-grid col-md-6">
-    <div class="wrap solid">
-      <h1>Latest Orders</h1>
-      <ul>
-        <% @orders.each do |order|%>
-          <h6><li>
-            <%= link_to order.otype, order %>&nbsp;on&nbsp;<%= order.created_at%>
-          </li></h6>
-          
-        <% end %>
-      </ul>
+  </div>
+  <div class="mid-grid">
+    <div class="wrap">
+      <h1>Welcome to our site!</h1>
+      <h2>This Ruby on Rails Project </h2>
+      <p>" This is an order site ypu can make group to you and your friend to order meal and get order from each of your friend ,so you can easly invinte your friend and you wil know the details of each one orders
+        "</p>
+      <a class="button1" href="#">Read More</a>
     </div>
   </div>
-  <div class="mid-grid col-md-6">
-    <div class="wrap solid">
-      <h1>Friends activity</h1>
-      
-    </div>
-  </div>
-  <!-- <div class="bottom-grids">
+  <div class="bottom-grids">
     <div class="wrap">
       <div class="bottom-grid1">
         <h3>POPULAR INFO</h3>
@@ -102,8 +92,7 @@
       </div>
       <div class="clear"> </div>
     </div>
-    <div class="clear"> </div> -->
-  </div>
+    <div class="clear"> </div>
     <!--end-wrap--->
   </div>
 </div>

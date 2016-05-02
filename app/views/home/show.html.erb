@@ -1,0 +1,36 @@
+<div class="contact">
+  <div class="wrap">
+    <div class="section group">
+      <div class="col span_2_of_3">
+        <div class="contact-form">
+          <div class="row">
+
+            <div class="mid-grid col-md-6">
+              <div class="wrap solid">
+                <h1>Latest Orders</h1>
+                <ul>
+                  <% @orders.each do |order| %>
+                      <h6>
+                        <li>
+                          <%= link_to order.otype, order %>&nbsp;on&nbsp;<%= order.created_at %>
+                        </li>
+                      </h6>
+
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <div class="mid-grid col-md-6">
+              <div class="wrap solid">
+                <h1>Friends activity</h1>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

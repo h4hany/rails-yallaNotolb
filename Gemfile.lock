@@ -47,6 +47,8 @@ GEM
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bootstrap-social-rails (4.12.0)
+      railties (>= 3.1)
     bootstrap_form (2.3.0)
     builder (3.2.2)
     byebug (8.2.4)
@@ -216,6 +218,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_follower
   bootstrap (~> 4.0.0.alpha3)
+  bootstrap-social-rails
   bootstrap_form
   byebug
   carrierwave (~> 0.9)
@@ -241,4 +244,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.0
