@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-<<<<<<< HEAD
+
 before_filter :authenticate_user!
 
   def index
@@ -7,7 +7,7 @@ before_filter :authenticate_user!
    
     respond_to do |format|
       format.html
-      format.json {render :action=>"index"}#{ render json: @friends }
+      format.json {render :action=>"index"}
       format.js {render :action=>"index"}
     end
   end
@@ -18,16 +18,21 @@ before_filter :authenticate_user!
   if @email!=""
    @user = User.find_by_email(@email)
      if @user!= nil
-        current_user.follow(@user)
-        flash[:success] = "Your friend"+@user.name+" had been added succefully"
-        @beforeAddFriend = Friend.find_by(fid: @user.id, user_id: current_user.id)
-          if @beforeAddFriend == nil
-              object = Friend.new(:fid => @user.id, :user_id => current_user.id)
-              object.save
-          end
-        redirect_to friends_path 
+        if  @user.id != current_user.id
+            current_user.follow(@user)
+            flash[:success] = "Your friend"+@user.name+" had been added succefully"
+            @beforeAddFriend = Friend.find_by(fid: @user.id, user_id: current_user.id)
+              if @beforeAddFriend == nil
+                  object = Friend.new(:fid => @user.id, :user_id => current_user.id)
+                  object.save
+              end
+            redirect_to friends_path 
+        else
+            flash[:error] = "You Can't Add Your Self ..."
+            redirect_to friends_path
+        end
     else
-        flash[:error] = "No User with entered Email..."
+        flash[:error] = "No User with the entered Email..."
         redirect_to friends_path
    end 
    else
