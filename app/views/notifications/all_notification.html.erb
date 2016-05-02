@@ -5,7 +5,7 @@
         <div class="contact-form">
           <div>
             <% @notifications.each do |notification| %>
-                <div><a href="/ordrs/<%= notification.ordr_id %>"> <%= notification.ordr.ofrom %></a></div>
+                <div><a href="order_details/notification/<%= notification.ordr_id %>"> <%= notification.ordr.ofrom %></a></div>
 
 
             <% end %>

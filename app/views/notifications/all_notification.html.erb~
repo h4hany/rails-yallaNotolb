@@ -1,7 +1,20 @@
-<div>
-<% @notifications.each do |notification| %>
-<div><a href="/ordrs/<%= notification.ordr_id %>" > <%= notification.ordr.ofrom %></a></li>
+fdsafdsafds
+<div class="contact">
+  <div class="wrap">
+    <div class="section group">
+      <div class="col span_2_of_3">
+        <div class="contact-form">
+          <div>
+            <% @notifications.each do |notification| %>
+                <div><a href="order_details/notification/<%= notification.ordr_id %>"></a></div>
 
 
-<% end %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

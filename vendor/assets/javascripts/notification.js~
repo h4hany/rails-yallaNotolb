@@ -10,7 +10,7 @@ alert(notification);
 			console.log(notification);
      	//notification.$update({ read: true }, function(err, notification) {         });
            });
-            window.location.replace("/order_details/notification/"+notificationId)
+            //window.location.replace("/order_details/notification/"+notificationId)
 }
 
 init_notifications = function(){
