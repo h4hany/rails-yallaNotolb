@@ -1,39 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="contact">
+  <div class="wrap">
+    <div class="section group">
+      <div class="col span_2_of_3">
+        <div class="contact-form">
 
-<p>
-  <strong>Otype:</strong>
-  <%= @ordr.otype %>
-</p>
+          <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Ofrom:</strong>
-  <%= @ordr.ofrom %>
-</p>
+          <p>
+            <strong>Otype:</strong>
+            <%= @ordr.otype %>
+          </p>
 
-<p>
-  <strong>Menu:</strong>
-  <%= @ordr.menu %>
-</p>
+          <p>
+            <strong>Ofrom:</strong>
+            <%= @ordr.ofrom %>
+          </p>
 
-<p>
-  <strong>Invited:</strong>
-  <%= @ordr.invited %>
-</p>
+          <p>
+            <strong>Menu:</strong>
+            <%= @ordr.menu %>
+          </p>
 
-<p>
-  <strong>Joined:</strong>
-  <%= @ordr.joined %>
-</p>
+          <p>
+            <strong>Invited:</strong>
+            <%= @ordr.invited %>
+          </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @ordr.status %>
-</p>
+          <p>
+            <strong>Joined:</strong>
+            <%= @ordr.joined %>
+          </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @ordr.user %>
-</p>
+          <p>
+            <strong>Status:</strong>
+            <%= @ordr.status %>
+          </p>
 
-<%= link_to 'Edit', edit_ordr_path(@ordr) %> |
-<%= link_to 'Back', ordrs_path %>
+          <p>
+            <strong>User:</strong>
+            <%= @ordr.user %>
+          </p>
+
+          <%= link_to 'Edit', edit_ordr_path(@ordr) %> |
+          <%= link_to 'Back', ordrs_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

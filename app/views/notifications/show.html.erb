@@ -1,19 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="contact">
+  <div class="wrap">
+    <div class="section group">
+      <div class="col span_2_of_3">
+        <div class="contact-form">
 
-<p>
-  <strong>Joined:</strong>
-  <%= @notification.joined %>
-</p>
+          <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @notification.user %>
-</p>
+          <p>
+            <strong>Joined:</strong>
+            <%= @notification.joined %>
+          </p>
 
-<p>
-  <strong>Ordr:</strong>
-  <%= @notification.ordr %>
-</p>
+          <p>
+            <strong>User:</strong>
+            <%= @notification.user %>
+          </p>
 
-<%= link_to 'Edit', edit_notification_path(@notification) %> |
-<%= link_to 'Back', notifications_path %>
+          <p>
+            <strong>Ordr:</strong>
+            <%= @notification.ordr %>
+          </p>
+
+          <%= link_to 'Edit', edit_notification_path(@notification) %> |
+          <%= link_to 'Back', notifications_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
