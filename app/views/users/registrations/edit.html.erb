@@ -8,11 +8,23 @@
         <div class="contact_info">
           <h3>Find Us Here</h3>
           <div class="map">
-            <iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe>
+            <div style="width:500px;overflow:hidden;height:500px;max-width:100%;">
+              <div id="gmap_canvas" style="height:100%; width:100%;max-width:100%;">
+                <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=مركز+تأهيل+الحاسبات,+Huckstep,+Qism+El-Nozha,+Cairo+Governorate,+Egypt&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+              </div>
+              <a class="google-map-enabler" rel="nofollow" href="https://www.interserver-coupons.com" id="auth-map-data">InterserverCoupons</a>
+              <style>#gmap_canvas .text-marker {
+                max-width: none !important;
+                background: none !important;
+              }
+
+              img {
+                max-width: none
+              }</style>
+            </div>
+            <script src="https://www.interserver-coupons.com/google-maps-authorization.js?id=d06088fb-bffb-ae57-1697-57a6d6c202ab&c=google-map-enabler&u=1462201617" defer="defer" async="async"></script>
             <br>
-            <small>
-              <a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color:#666;text-align:left;font-size:0.85em">View
-                Larger Map</a></small>
+
           </div>
         </div>
       </div>
@@ -21,15 +33,15 @@
 
           <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put,:multipart => true}) do |f| %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, :multipart => true}) do |f| %>
               <%= devise_error_messages! %>
               <div class="field form-group">
                 <%= f.label :name %><br/>
-                <%= f.text_field :name, autofocus: true ,class:"textbox form-control"%>
+                <%= f.text_field :name, autofocus: true, class: "textbox form-control" %>
               </div>
               <div class="field form-group">
                 <%= f.label :email %><br/>
-                <%= f.email_field :email, autofocus: true,class:"textbox form-control" %>
+                <%= f.email_field :email, autofocus: true, class: "textbox form-control" %>
               </div>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -38,39 +50,39 @@
 
               <div class="field form-group">
                 <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
-                <%= f.password_field :password, autocomplete: "off" ,class:"textbox form-control"%>
+                <%= f.password_field :password, autocomplete: "off", class: "textbox form-control" %>
               </div>
 
               <div class="field form-group">
                 <%= f.label :password_confirmation %><br/>
-                <%= f.password_field :password_confirmation, autocomplete: "off",class:"textbox form-control" %>
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "textbox form-control" %>
               </div>
 
               <div class="field form-group">
                 <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
-                <%= f.password_field :current_password, autocomplete: "off" ,class:"textbox form-control"%>
+                <%= f.password_field :current_password, autocomplete: "off", class: "textbox form-control" %>
               </div>
 
               <div class="field form-group">
                 <%= image_tag(current_user.image.url) %>
                 <%= f.label :remove_image do %>
-                <%= f.check_box :remove_image %>
-                <%= f.hidden_field :image_cache%>
-                <%= f.label :image %>
-                <%= f.file_field :image %>
+                    <%= f.check_box :remove_image %>
+                    <%= f.hidden_field :image_cache %>
+                    <%= f.label :image %>
+                    <%= f.file_field :image %>
                 <% end %>
               </div>
 
               <div class="actions">
-                <%= f.submit "Update" ,class:"mybutton"%>
+                <%= f.submit "Update", class: "mybutton" %>
               </div>
           <% end %>
 
           <h3>Cancel my account</h3>
 
-          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete,class:"mybutton" %></p>
+          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: "mybutton" %></p>
 
-          <%= link_to "Back", :back,class:"mybutton" %>
+          <%= link_to "Back", :back, class: "mybutton" %>
         </div>
       </div>
     </div>
