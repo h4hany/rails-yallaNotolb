@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :friends
   resources :group_users
   resources :order_details
-  #resources :notifications
+  resources :notifications
   resources :ordrs
   resources :groups
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }

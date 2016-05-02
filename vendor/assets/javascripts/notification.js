@@ -79,7 +79,7 @@ init_notifications_lookup = function(){
 }
 //init_notifications_lookup();
 init_notifications();
-	 setInterval(function(){ init_notifications_lookup(); }, 3000);
+	 setInterval(function(){ init_notifications_lookup(); }, 300000);
 /*$(function(){
 	init_notifications();
 	 setInterval(function(){ init_notifications_lookup(); }, 3000);

@@ -6,7 +6,7 @@ class OrdrsController < ApplicationController
   # GET /ordrs
   # GET /ordrs.json
   def index
-    @ordrs = Ordr.all
+    @ordrs = Ordr.where(user_id: current_user.id)
   end
 
   # GET /ordrs/1
@@ -30,20 +30,20 @@ class OrdrsController < ApplicationController
     @ordr.user_id = current_user.id
     respond_to do |format|
       if @ordr.save
-        uids = params[:ordr][:uids].split(',')
-        oid = @ordr.id
-        uids.each do |uid|
-          if !uid.empty?
-            noti = Notification.new
-            noti.user_id = (Ordr.find(oid)).user_id
-            noti.reciever_id = uid
-            noti.ordr_id = oid
-            noti.read = 0
-            noti.joined = 0
-            noti.seen = 0
-            noti.save
-          end
-        end
+        # uids = params[:ordr][:uids].split(',')
+        # oid = @ordr.id
+        # uids.each do |uid|
+        #   if !uid.empty?
+        #     noti = Notification.new
+        #     # noti.user_id = current_user.id
+        #     # noti.reciever_id = uid
+        #     # noti.ordr_id = oid
+        #     # noti.read = 0
+        #     # noti.joined = 0
+        #     # noti.seen = 0
+        #     noti.save
+        #   end
+        # end
         format.html { redirect_to @ordr, notice: 'Ordr was successfully created.' }
         format.json { render :show, status: :created, location: @ordr }
       else

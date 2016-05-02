@@ -47,17 +47,22 @@ function removeUser(id){
 	console.log(arr);
 }
 
-function insertFriends(friends){
+function insertFriends(friends,editable){
+	if(typeof(editable) == 'undefined')
+		editable = true;
 	var elm;
-	// var invited = parseInt($('#ordr_invited').val());
-
 	for(var i = 0;i < friends.length;i++){
-		elm = "<div id=" + friends[i].id + " class='row'><h3>" + friends[i].email + "</h3>&nbsp;<a href='#' onclick='removeUser("+friends[i].id+")'><i class='fa fa-times'></i></a></div>";
+		if(editable)
+			elm = "<div id=" + friends[i].id + " class='row'><h3>" + friends[i].email + "</h3>&nbsp;<a href='#' onclick='removeUser("+friends[i].id+")'><i class='fa fa-times'></i></a></div>";
+		else
+			elm = "<div id=" + friends[i].id + " class='row'><h3>" + friends[i].email + "</h3>&nbsp;</div>";
 		$('#users-container').append(elm);
 		// invited++;
-		$('#group_uids').val($('#group_uids').val()+","+friends[i].id);
+		if(editable)
+			$('#group_uids').val($('#group_uids').val()+","+friends[i].id);
 	}
-	friendIds = ($('#group_uids').val()).split(",");
+	if(editable)
+		friendIds = ($('#group_uids').val()).split(",");
 	// $('#ordr_invited').val(invited);
 }
 // function addFriendsFromGroup(){
@@ -109,6 +114,69 @@ function addUser(){
 					insertFriends([response.user]);
 				}
 			}
+		},
+		error:function(err,status,error){
+			console.log(error);
+		},
+		complete:function(complete){
+			console.log("complete");
+		},
+		dataType:'json'
+	});
+}
+
+
+function getGroupMembers(){
+	var val = $('#group_gname').val();
+	var url = "/group/getUsers";
+	$.ajax({
+		url:url,
+		method:'GET',
+		data:{
+			"str": val
+		},
+		success:function(response){
+			if(response.user != null){
+				for(var i = 0; i < response.user.length;i++){
+					if(getUserIndex(response.user[i].id) < 0){
+						friends.push(response.user[i]);
+						insertFriends([response.user[i]]);
+					}
+				}
+			}
+			else
+				console.log("there in no user or group with the specidfied name");
+		},
+		error:function(err,status,error){
+			console.log(error);
+		},
+		complete:function(complete){
+			console.log("complete");
+		},
+		dataType:'json'
+	});
+}
+
+function getGroupMembersStatic(){
+	var val = $('#group_gname').html();
+	var url = "/group/getUsers";
+	$.ajax({
+		url:url,
+		method:'GET',
+		data:{
+			"str": val
+		},
+		success:function(response){
+			if(response.user != null){
+				for(var i = 0; i < response.user.length;i++){
+					if(getUserIndex(response.user[i].id) < 0){
+						friends.push(response.user[i]);
+						insertFriends([response.user[i]],false);
+					}
+				}
+			}
+			else
+				console.log("there in no user or group with the specidfied name");
 		},
 		error:function(err,status,error){
 			console.log(error);

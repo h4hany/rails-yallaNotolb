@@ -1,6 +1,15 @@
 <h1>Editing Group</h1>
+<%= link_to 'Back', groups_path,class:"btn mybutton" %>
 
-<%= render 'form' %>
-
+<div class="row">
+	<div class="col-md-6">
+	    <%= render 'form' %>
+	</div>
+	<div id="users-container" class="wrap solid col-md-6">
+	</div>
+</div>
 <%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+
+<script type="text/javascript">
+getGroupMembers();
+</script>

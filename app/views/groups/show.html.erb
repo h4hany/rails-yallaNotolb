@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Gname:</strong>
-  <%= @group.gname %>
+  <strong>Group name:</strong>
+  <h3 id="group_gname"><%= @group.gname %></h3>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @group.user %>
+  <strong>Members :</strong>
+ 	<div id="users-container" class="wrap solid col-md-6">
+    </div>
 </p>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
+
+<script type="text/javascript">
+getGroupMembersStatic();
+</script>

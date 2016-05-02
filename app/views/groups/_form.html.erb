@@ -25,6 +25,7 @@
     <a href="#" class="btn btn-success" onclick="addUser()" style="color: #121D12">Add friend</a>
   </div>
   <%= f.hidden_field :uids %>
+  <%= f.hidden_field :gid,value: @group.id %>
   <div class="actions">
     <%= f.submit "Create group",class:"mybutton btn" %>
   </div>

@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.where(user_id: current_user.id)
   end
 
   # GET /groups/1
@@ -68,6 +68,17 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
+        GroupUser.where(group_id: @group.id).destroy_all
+        uids = params[:group][:uids].split(',')
+        gid = @group.id
+        uids.each do |uid|
+          if !uid.empty?
+            row = GroupUser.new
+            row.group_id = gid
+            row.user_id = uid
+            row.save
+          end
+        end
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
