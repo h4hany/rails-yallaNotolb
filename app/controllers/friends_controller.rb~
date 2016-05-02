@@ -1,49 +1,60 @@
 class FriendsController < ApplicationController
 before_filter :authenticate_user!
-
+  # GET /friends
+  # GET /friends.json
   def index
     @friends = User.all
    
     respond_to do |format|
       format.html
-      format.json {render :action=>"index"}#{ render json: @friends }
-      format.js {render :action=>"index"}
+      format.json { render json: @friends }
     end
   end
 
 
   def newfriend
     @email = params[:user][:email]
-  if @email!=""
-   @user = User.find_by_email(@email)
+    puts "***********************" + @email.inspect + "*****************************"
+    # Rails.logg
+
+    if @email!=""
+
+    # puts "***********************" + @email + "*****************************"
+     @user = User.find_by_email(@email)
      if @user!= nil
-        current_user.follow(@user)
-        flash[:success] = "Your friend"+@user.name+" had been added succefully"
-        @beforeAddFriend = Friend.find_by(fid: @user.id, user_id: current_user.id)
-          if @beforeAddFriend == nil
-              object = Friend.new(:fid => @user.id, :user_id => current_user.id)
-              object.save
-          end
-        redirect_to friends_path 
+      current_user.follow(@user)
+      redirect_to friends_path
     else
-        flash[:error] = "No User with entered Email..."
         redirect_to friends_path
    end 
    else
-      flash[:error] = "Please Entere Value..."
-      redirect_to friends_path
+     redirect_to friends_path {"error "}
     end
+
+
   end
   
+
+  def addfriend
+    unless current_user.id == params[:id]
+    @user = User.find(params[:id])
+    current_user.follow(@user)
+    respond_to do |format|
+      format.js {render :action=>"addfriend"}
+    end
+   end
+
+  end
+
 
   def unfriend
     @user = User.find(params[:id])
     current_user.stop_following(@user)
-      @beforeAddFriend = Friend.find_by(fid: params[:id], user_id: current_user.id)
-          if @beforeAddFriend != nil
-                  Friend.find_by(fid: params[:id], user_id: current_user.id).destroy
-          end
-    redirect_to friends_path(format: :js)
+#    respond_to do |format|
+
+  #    format.js {render :action=>"unfriend"}
+ # end
+
  end
 
  end

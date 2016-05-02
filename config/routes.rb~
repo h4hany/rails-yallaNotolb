@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #resources :notifications
   resources :ordrs
   resources :groups
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -19,21 +19,33 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get 'user/getId' => 'user#getUserId'
-  get 'order_details/addAjax' => 'order_details#addAjax'
-
+  get 'order_details/addajax' => 'order_details#addajax'
+  get '/user/getFriendId' => 'user#getFriendId'
   get 'group/getUsers' => 'groups#getUsers'
 
 
+  get 'notifications/:id' => 'notifications#all_notification'
 
-  sockets_for :notifications , only: [:show]
+  #sockets_for :notifications , only: [:show]
   
   sockets_for :users do
     sockets_for :notifications
   end
 
 
-  get 'allNotifications/:id', to: 'notifications#html_index'
-  get 'notifications/:id/clear' , to: 'notifications#all_notification'
+
+
+ resources :follows
+match 'friends/newfriend' => 'friends#newfriend', :via => :post
+ resources :friends do
+    member do
+      get :friend
+      get :unfriend
+     # post '/newfollow', to: 'users#newfollow'
+    end
+ end
+
+  #get 'notifications/:id/clear' , to: 'notifications#all_notification'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
