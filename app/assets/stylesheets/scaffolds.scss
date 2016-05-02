@@ -38,8 +38,13 @@ div {
 }
 
 #notice {
-  color: green;
-}
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: green;
+    text-align: center;
+     font-size: 200%;
+
+  }
 
 .field_with_errors {
   padding: 2px;

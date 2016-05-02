@@ -1,5 +1,9 @@
 <!---start-content---->
-
+  <div id="notice"> 
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  </div>
 <!---start-contact---->
 <div class="contact">
   <div class="wrap">
