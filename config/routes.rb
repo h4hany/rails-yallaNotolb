@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   get 'group/getUsers' => 'groups#getUsers'
 
 
-  get 'notifications/:id/clear', to: 'notifications#all_notification'
+  get 'notifications/:id' => 'notifications#all_notification'
 
-  sockets_for :notifications , only: [:show]
+  #sockets_for :notifications , only: [:show]
   
   sockets_for :users do
     sockets_for :notifications

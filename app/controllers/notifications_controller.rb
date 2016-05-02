@@ -26,10 +26,11 @@ class NotificationsController < ApplicationController
  
 
   def all_notification
-      @notifications = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id])
+      @notifications = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("(notifications.user_id = ? or notifications.reciever_id = ?)", params[:id] , params[:id])
 
-@rrr = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:user_id] , params[:user_id]).update_all( :seen => true  )
+@rrr = Notification.joins(:ordr,:user).select('notifications.*,users.name,ordrs.otype,ordrs.ofrom,ordrs.menu').where("notifications.read = false and (notifications.user_id = ? or notifications.reciever_id = ?)", params[:id] , params[:id]).update_all( :read => true  )
 
+@notifications
   end
 
   def create
@@ -42,14 +43,14 @@ class NotificationsController < ApplicationController
 
   def show
     broadcast do
-      @notification = Notification.find(params[:id])
+      #@notification = Notification.find(params[:id])
     end
 
   end
   def show
     broadcast do
-      @notification = Notification.find(params[:id])
-      @notification.update(:read => true)
+      #@notification = Notification.find(params[:id])
+      #@notification.update(:read => true)
     end
 
   end
