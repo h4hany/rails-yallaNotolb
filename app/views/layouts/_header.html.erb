@@ -21,7 +21,7 @@
        <!-- <%= image_tag(current_user.image.url, size: "82x82", class: "img-rounded") %>
         &nbsp;
         <%= link_to current_user.name, edit_user_registration_path , {style:'color:white;a:hover {
-  color: #CCCCCC;
+  color: #ffffff;
 }'}%>
 -->
 
@@ -37,7 +37,13 @@
           <li><%= link_to 'Friends', friends_path %></li>
           <li><%= link_to 'Groups', groups_path %></li>
           <li><%= link_to 'Orders', ordrs_path %></li>
-          <li><%= link_to 'Signout', destroy_user_session_path, method: :delete %></li>
+          <% if user_signed_in? %>
+              <li><%= link_to 'Signout', destroy_user_session_path, method: :delete %></li>
+
+        <% else %>
+              <li><%= link_to 'Signin',  new_user_session_path%></li>
+
+          <% end %>
           <div class="clear"></div>
         </ul>
       </div>
