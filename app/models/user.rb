@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable 
 
+  acts_as_followable
+  acts_as_follower
 
 
 

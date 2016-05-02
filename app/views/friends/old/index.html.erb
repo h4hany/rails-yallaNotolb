@@ -1,0 +1,39 @@
+<div class="contact">
+  <div class="wrap">
+    <div class="section group">
+      <div class="col span_2_of_3">
+        <div class="contact-form"><p id="notice"><%= notice %></p>
+
+          <h1>Listing Friends</h1>
+
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Fid</th>
+              <th>User</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @friends.each do |friend| %>
+                <tr>
+                  <td><%= friend.fid %></td>
+                  <td><%= friend.user %></td>
+                  <td><%= link_to 'Show', friend %></td>
+                  <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
+                  <td><%= link_to 'Destroy', friend, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+          <br>
+
+          <%= link_to 'New Friend', new_friend_path ,class:"mybutton btn"%>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

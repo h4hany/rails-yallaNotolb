@@ -35,6 +35,17 @@ Rails.application.routes.draw do
   end
 
 
+
+
+ resources :friends
+match 'friends/newfriend' => 'friends#newfriend', :via => :post
+ resources :friends do
+    member do
+      get :friend
+      get :unfriend
+    end
+ end
+
   #get 'notifications/:id/clear' , to: 'notifications#all_notification'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

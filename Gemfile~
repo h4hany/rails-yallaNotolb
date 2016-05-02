@@ -31,11 +31,20 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2" 
+gem 'omniauth-oauth2'
 
 gem 'entangled'
 
+gem 'puma'
+<<<<<<< HEAD
+gem "acts_as_follower"
+=======
+gem 'bootstrap-social-rails'
 
+>>>>>>> 61ec804dc5ed28b9b5d4c2592b47b13561274cd1
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

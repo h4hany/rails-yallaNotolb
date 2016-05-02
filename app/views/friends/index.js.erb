@@ -1,0 +1,22 @@
+
+
+
+
+ <% if flash[:error] %>
+$('#addFriendRes').html('<div class="alert alert-danger">  <strong>Error:</strong> <%= flash[:error] %></div>');
+  <% end %>
+
+
+
+
+
+ <% if flash[:success] %>
+
+$('#addFriendRes').html('<div class="alert alert-success">  <strong>Success:</strong> <%= flash[:success] %></div>');
+
+  <% end %>
+
+
+
+
+$('#frindesPanelBody').html('<%= escape_javascript(render :partial => "friends/frindes_list") %>');
