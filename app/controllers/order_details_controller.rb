@@ -1,7 +1,7 @@
 class OrderDetailsController < ApplicationController
   before_action :authenticate_user!
 
-  before_action  :set_order_detail,only: [:show, :edit, :update, :destroy,:addajax]
+  before_action  :set_order_detail,only: [:show, :edit, :update, :destroy,:addajax,:notifcation]
 #
   # GET /order_details
   # GET /order_details.json
@@ -34,6 +34,13 @@ class OrderDetailsController < ApplicationController
   # GET /order_details/new
   def new
     @order_detail = OrderDetail.new
+  end
+
+  def notification
+    @x=params[:id]
+
+    @order_details = OrderDetail.all
+
   end
 
   # GET /order_details/1/edit
