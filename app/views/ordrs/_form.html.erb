@@ -24,7 +24,11 @@
   </div>
   <div class="field form-group">
     <%= f.label "Friend/Group" %><br>
-    <%= f.text_field :virtual_attribute ,class:"mytext form-control"%>
+
+    <input type="text" placeholder="Enter your Location" style="margin-top: 5px" name="location" id="local_id" onkeyup="autocomplet_user()">
+
+    <ul id="local_list_id"></ul>
+
     <a href="#" class="btn btn-success" onclick="addFriend()" style="color: #121D12">Add friend</a>
   </div>
   <%= f.hidden_field :invited,value:"0" %>

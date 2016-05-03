@@ -2,7 +2,6 @@ class OrdrsController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_ordr, only: [:show, :edit, :update, :destroy]
-
   # GET /ordrs
   # GET /ordrs.json
   def index

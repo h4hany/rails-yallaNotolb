@@ -29,7 +29,7 @@
                       <td><%= order_detail.qty %></td>
                       <td><%= order_detail.price %></td>
                       <td><%= order_detail.comment %></td>
-                      <td><%= order_detail.notification %></td>
+                       <td><%= order_detail.notification.id %></td>
                       <td><%= link_to 'Show', order_detail %></td>
                       <td><%= link_to 'Edit', edit_order_detail_path(order_detail) %></td>
                       <td><%= link_to 'Destroy', order_detail, method: :delete, data: {confirm: 'Are you sure?'} %></td>

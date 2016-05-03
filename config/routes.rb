@@ -21,12 +21,11 @@ Rails.application.routes.draw do
   get 'user/getId' => 'user#getUserId'
   get 'home/show' => 'home#show'
   get 'order_details/notification/:id' => 'order_details#notification'
-
+  get 'user/getFriendLikeString' => 'user#getFriendLikeString'
+  get 'group/getGroupNameLikeString' => 'groups#getGroupNameLikeString'
   get 'order_details/addajax' => 'order_details#addajax'
   get 'user/getFriendId' => 'user#getFriendId'
   get 'group/getUsers' => 'groups#getUsers'
-
-
   get 'notifications/:id' => 'notifications#all_notification'
 
   #sockets_for :notifications , only: [:show]

@@ -7,7 +7,7 @@ Rails.application.config.assets.precompile += %w( order_details.js )
 Rails.application.config.assets.precompile += %w( groups.js )
 Rails.application.config.assets.precompile += %w( entangled-js.js )
 Rails.application.config.assets.precompile += %w( notification.js )
-
+Rails.application.config.assets.precompile += %w( camera.min.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

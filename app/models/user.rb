@@ -22,4 +22,9 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,20]
       end
   end
+  #
+  # def self.search(term)
+  #   where('LOWER(email) LIKE :term', term: "%#{term.downcase}%")
+  # end
+
 end

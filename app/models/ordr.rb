@@ -4,4 +4,7 @@ class Ordr < ActiveRecord::Base
   attr_accessor :uids
   belongs_to :user
   has_many :notifications
+
+
+
 end

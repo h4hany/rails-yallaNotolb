@@ -17,7 +17,8 @@
 //= require turbolinks
 //= require jquery.min
 //= require jquery.lightbox
-//= require camera.min
+//= require jquery-ui
+//= require autocomplete-rails
 //= require_tree .
 
 var friends = [];
@@ -189,3 +190,60 @@ function getGroupMembersStatic(){
 		dataType:'json'
 	});
 }
+function autocomplet_user() {
+    jQuery(document).ready(function($){
+        var min_length = 0; // min caracters to display the autocomplete
+        var keyword = $('#local_id').val();
+        var url = '/user/getFriendLikeString'
+        if (keyword.length >= min_length) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: {keyword:keyword},
+                success:function(data){
+                    if(data.users != null) {
+                        $('#local_list_id').show();
+
+
+                        $('#local_list_id').html('<li>' +data.users+ '</li>\n');
+                    }else
+                        autocomplet_group();
+                }
+            });
+        } else {
+            $('#local_list_id').hide();
+        }
+    });
+}
+
+function autocomplet_group() {
+    jQuery(document).ready(function($){
+        var min_length = 0; // min caracters to display the autocomplete
+        var keyword = $('#local_id').val();
+        var url = '/group/getGroupNameLikeString'
+        if (keyword.length >= min_length) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: {keyword:keyword},
+                success:function(data){
+                    if(data.groups != null) {
+                        $('#local_list_id').show();
+                        $('#local_list_id').html(data.groups);
+                    }
+                }
+            });
+        } else {
+            $('#local_list_id').hide();
+        }
+    });
+}
+function set_item(item) {
+    jQuery(document).ready(function($){
+
+        // change input value
+        $('#local_id').val(item);
+        // hide proposition list
+        $('#local_list_id').hide();});
+}
+

@@ -5,6 +5,14 @@ class GroupsController < ApplicationController
 
   # GET /groups
   # GET /groups.json
+  def getGroupNameLikeString
+    groups = Group.where(user_id: current_user.id).where(["gname like ?","%#{params[:keyword]}%"])
+    arr = Array.new
+    groups.each do |g|
+      arr.push g.gname
+    end
+    render :json => {groups: arr}
+  end
   def getUsers
     group = Group.find_by(gname: params[:str])
     if group.nil?

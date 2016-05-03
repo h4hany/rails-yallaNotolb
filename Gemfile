@@ -43,9 +43,11 @@ gem 'puma'
 gem "acts_as_follower"
 
 gem 'bootstrap-social-rails'
+gem 'jquery-ui-rails'
 
 
-
+gem 'foundation-rails', '~> 6.2', '>= 6.2.1.0'
+gem 'rails4-autocomplete', '~> 1.1', '>= 1.1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
