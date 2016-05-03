@@ -7,5 +7,8 @@ class HomeController < ApplicationController
 
   def show
       @orders = Ordr.where(user_id: current_user.id).limit(5)
+      fids = Friend.where(user_id: current_user.id).select(:fid)
+      @orders_friends = Ordr.where(user_id: fids).includes(:user).limit(5)
+      # @orders_friends = Ordr.where(user_id: fids).includes(:user).limit(5)
   end
 end

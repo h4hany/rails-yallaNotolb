@@ -27,6 +27,8 @@ class OrdrsController < ApplicationController
   def create
     @ordr = Ordr.new(ordr_params)
     @ordr.user_id = current_user.id
+    @ordr.joined = 0
+    @ordr.status = "Waiting"
     respond_to do |format|
       if @ordr.save
         uids = params[:ordr][:uids].split(',')

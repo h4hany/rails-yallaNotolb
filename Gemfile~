@@ -39,12 +39,12 @@ gem 'omniauth-oauth2'
 gem 'entangled'
 
 gem 'puma'
-<<<<<<< HEAD
+
 gem "acts_as_follower"
-=======
+
 gem 'bootstrap-social-rails'
 
->>>>>>> 61ec804dc5ed28b9b5d4c2592b47b13561274cd1
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
