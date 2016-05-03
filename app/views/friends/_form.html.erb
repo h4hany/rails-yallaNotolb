@@ -12,7 +12,12 @@
   <% end %>
 
  <div>
-    <%= f.text_field :fid %>
+    
+  <input class="form-control" placeholder="Email" type="text" list="contacts" value="" name="user[email]" id="user_email" onkeypress="autocomplet_user()">
+  <datalist id="contacts">
+    </datalist>
     <%= f.submit "Create Friend",class:"mybutton btn" %>
   </div>
  <% end %>
+
+ 

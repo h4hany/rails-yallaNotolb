@@ -7,7 +7,7 @@ openNotification = function(notificationId){
    Notifications.find( notificationId , function(err, notification) {
 
 alert(notification);
-			console.log(notification);
+			//console.log(notification);
      	//notification.$update({ read: true }, function(err, notification) {         });
            });
             window.location.replace("/order_details/notification/"+notificationId)
@@ -28,7 +28,7 @@ openAllNotifications = function(){
 init_notifications_lookup = function(){
 
 		Notifications.all(function(err, notifications) {
-			console.log(notifications);
+			//console.log(notifications);
 			  var holder=document.getElementById("notifications");
 
 	          var newHolder = '';

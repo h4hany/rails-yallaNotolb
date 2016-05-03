@@ -25,9 +25,9 @@
   <div class="field form-group">
     <%= f.label "Friend/Group" %><br>
 
-    <input type="text" placeholder="Enter your Location" style="margin-top: 5px" name="location" id="local_id" onkeyup="autocomplet_user()">
-
-    <ul id="local_list_id"></ul>
+    <input type="text" placeholder="Enter email or group name" list="contacts" style="margin-top: 5px" name="location" id="ordr_virtual_attribute" onkeypress="autocomplet_friend()">
+    <datalist id="contacts">
+    </datalist>
 
     <a href="#" class="btn btn-success" onclick="addFriend()" style="color: #121D12">Add friend</a>
   </div>

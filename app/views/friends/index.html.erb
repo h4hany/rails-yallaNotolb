@@ -14,7 +14,9 @@
   <p>
   <div class="form-group">
     <h5><%= f.label :email %></h5>
-    <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    <%= f.text_field :email, class: "form-control", placeholder: "Email",list:"contacts", onkeypress:"autocomplet_user()" %>
+    <datalist id="contacts">
+    </datalist>
   </div>
      <%= f.submit "Add Friend", class: 'btn btn-default' %>
 </div>

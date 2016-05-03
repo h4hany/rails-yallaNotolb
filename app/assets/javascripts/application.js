@@ -190,54 +190,80 @@ function getGroupMembersStatic(){
 		dataType:'json'
 	});
 }
-function autocomplet_user() {
-    jQuery(document).ready(function($){
-        var min_length = 0; // min caracters to display the autocomplete
-        var keyword = $('#local_id').val();
-        var url = '/user/getFriendLikeString'
-        if (keyword.length >= min_length) {
-            $.ajax({
-                url: url,
-                type: 'GET',
-                data: {keyword:keyword},
-                success:function(data){
-                    if(data.users != null) {
-                        $('#local_list_id').show();
-
-
-                        $('#local_list_id').html('<li>' +data.users+ '</li>\n');
-                    }else
-                        autocomplet_group();
-                }
-            });
-        } else {
-            $('#local_list_id').hide();
-        }
-    });
-}
 
 function autocomplet_group() {
-    jQuery(document).ready(function($){
-        var min_length = 0; // min caracters to display the autocomplete
-        var keyword = $('#local_id').val();
-        var url = '/group/getGroupNameLikeString'
-        if (keyword.length >= min_length) {
-            $.ajax({
-                url: url,
-                type: 'GET',
-                data: {keyword:keyword},
-                success:function(data){
-                    if(data.groups != null) {
-                        $('#local_list_id').show();
-                        $('#local_list_id').html(data.groups);
+    var min_length = 0; // min caracters to display the autocomplete
+    var keyword = $('#ordr_virtual_attribute').val();
+    var url = '/group/getGroupNameLikeString';
+    if (keyword.length >= min_length) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {keyword:keyword},
+            success:function(data){
+            	$('#contacts').empty();
+                if(data.groups.length > 0) {
+                    for(var i = 0; i < data.groups.length; i++){
+                    	$('#contacts').append("<option value='"+data.groups[i]+"'>");
                     }
                 }
-            });
-        } else {
-            $('#local_list_id').hide();
-        }
-    });
+            }
+        });
+    } else {
+        $('#local_list_id').hide();
+    }
 }
+
+function autocomplet_friend() {
+    var min_length = 0; // min caracters to display the autocomplete
+    var keyword = $('#ordr_virtual_attribute').val();
+    var url = '/user/getFriendLikeString';
+    if (keyword.length >= min_length) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {keyword:keyword},
+            success:function(data){
+            	$('#contacts').empty();
+                if(data.emails.length > 0) {
+                    for(var i = 0; i < data.emails.length; i++){
+                    	$('#contacts').append("<option value='"+data.emails[i]+"'>");
+                    }
+                }else
+                    autocomplet_group();
+            }
+        });
+    } else {
+        $('#local_list_id').hide();
+    }
+}
+
+function autocomplet_user() {
+	console.log("dfghjk")
+    var min_length = 0; // min caracters to display the autocomplete
+    var keyword = $('#user_email').val();
+    var url = '/user/getUserLikeString';
+    if (keyword.length >= min_length) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {keyword:keyword},
+            success:function(data){
+            	console.log(data)
+            	$('#contacts').empty();
+                if(data.emails.length > 0) {
+                    for(var i = 0; i < data.emails.length; i++){
+                    	$('#contacts').append("<option value='"+data.emails[i]+"'>");
+                    }
+                }else
+                    autocomplet_group();
+            }
+        });
+    } else {
+        $('#local_list_id').hide();
+    }
+}
+
 function set_item(item) {
     jQuery(document).ready(function($){
 

@@ -24,10 +24,19 @@ class UserController < ApplicationController
 
   def getFriendLikeString
 
-    suggestions = Friend.joins(:user).includes(:user).where(["users.email like ?","%#{params[:keyword]}%"])
+    suggestions = Friend.joins(:user).includes(:user).where(["users.email like ?","#{params[:keyword]}%"])
     arr = Array.new
     suggestions.each do |suggestion|
       arr.push suggestion.user.email
+    end
+    render :json => {emails: arr}
+  end
+
+  def getUserLikeString
+    suggestions = User.where(["email like ?","#{params[:keyword]}%"])
+    arr = Array.new
+    suggestions.each do |suggestion|
+      arr.push suggestion.email
     end
     render :json => {emails: arr}
   end

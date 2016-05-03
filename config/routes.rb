@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'user/getFriendId' => 'user#getFriendId'
   get 'group/getUsers' => 'groups#getUsers'
   get 'notifications/:id' => 'notifications#all_notification'
-
+  get 'user/getUserLikeString' => 'user#getUserLikeString'
   #sockets_for :notifications , only: [:show]
   
   sockets_for :users do
