@@ -24,9 +24,9 @@
               <div class="wrap solid">
                 <h1>Friends activity</h1>
                 <ul>
-                  <% @orders.each do |order|%>
+                  <% @orders_friends.each do |order|%>
                       <h6><li>
-                        <%= link_to order.otype, order %>&nbsp;on&nbsp;<%= order.created_at%>
+                        <%= link_to order.user.name , order %>&nbsp;had ordered&nbsp;<%= link_to order.otype, order %>&nbsp;on&nbsp;<%= order.created_at%>
                       </li></h6>
 
                   <% end %>
