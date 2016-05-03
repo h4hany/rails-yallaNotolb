@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
 
 
- resources :friends
+ #resources :friends
 match 'friends/newfriend' => 'friends#newfriend', :via => :post
  resources :friends do
     member do

@@ -1,0 +1,21 @@
+            <div class="row">
+              <% @friends.each do |user| %>
+
+
+                <% unless user == current_user %>
+                <% if current_user.following?(user) %>
+                  <div class="col-md-4">
+                    <div class="container">
+                      <h4><%= user.name %></h4>
+                      <span id="follow_user<%=user.id%>">
+                        <%= link_to(unfriend_friend_path(user), :remote => true, :class => 'btn btn-danger') do %>
+                          <i class="icon-remove icon-white"></i>
+                          Un-Friend
+                        <% end %><p></p>
+                    </div>
+                  </div>
+                
+                <%end %>
+              <% end %>
+            <% end %>
+        </div>

@@ -1,39 +1,56 @@
-<div class="contact">
-  <div class="wrap">
-    <div class="section group">
-      <div class="col span_2_of_3">
-        <div class="contact-form"><p id="notice"><%= notice %></p>
+<%- model_class = User -%>
+<div class="container">
+  <div class="page-header">
+  <h1>Friends</h1>
+</div>
+</div>
 
-          <h1>Listing Friends</h1>
 
-          <table class="table table-hover">
-            <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th colspan="2">Action</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <% @friends.each do |friend| %>
-                <tr>
-                  <td><%= friend.name %></td>
-                  <td><%= friend.email %></td>
-                  <td><%= link_to 'Show', friend %></td>
-                  <!-- <td><%= link_to 'Edit', edit_friend_path(friend) %></td> -->
-                  <td><%= link_to 'Destroy', friend, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-                </tr>
-            <% end %>
-            </tbody>
-          </table>
-
-          <br>
-
-          <%= link_to 'New Friend', new_friend_path ,class:"mybutton btn"%>
-
-        </div>
-      </div>
-    </div>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+  <div id="addFriendRes" style=""></div>
+  <%= form_for User.new , url: friends_newfriend_path, :remote => true do |f| %>
+  <p>
+  <div class="form-group">
+    <h5><%= f.label :email %></h5>
+    <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
   </div>
+     <%= f.submit "Add Friend", class: 'btn btn-default' %>
+</div>
+</div>
+  
+  <!-- class :'btn btn-primary'  -->
+</p>
+<% end %><br/>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+  <div class="container">
+    <h4>Friends List</h4>
+  </div>
+</div>
+  <div class="panel-body" id="frindesPanelBody">
+    <div class="row">
+      <% @friends.each do |user| %>
+        <% unless user == current_user %>
+        <% if current_user.following?(user) %>
+          <div class="col-md-4">
+            <div class="container">
+              <h4><%= user.name %></h4>
+              <span id="follow_user<%=user.id%>">
+                <%= link_to(unfriend_friend_path(user), :remote => true, :class => 'btn btn-danger') do %>
+                  <i class="icon-remove icon-white"></i>
+                  Un-Friend
+                <% end %><p></p>
+            </div>
+          </div>
+        
+        <%end %>
+      <% end %>
+    <% end %>
+</div>
+  </div>
+
+</div>
 </div>
