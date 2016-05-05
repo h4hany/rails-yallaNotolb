@@ -37,9 +37,14 @@ class OrderDetailsController < ApplicationController
   end
 
   def notification
-    @x=params[:id]
 
-    @order_details = OrderDetail.all
+    @orderID = Notification.find_by(id: params[:id])
+    @orderStatus = Ordr.find_by(id: @orderID)
+    @orderStatus = @orderStatus.status
+    @order_details = Notification.joins(:order_detail, :ordr).select('order_details.*,ordrs.status,ordrs.user_id As ownerid,notifications.user_id As notisourceid,notifications.reciever_id As notidestid').where("(notifications.ordr_id = ? )", @orderID.ordr_id, )
+    @x = params[:id]
+
+    #@order_details = OrderDetail.where()
 
   end
 
@@ -50,15 +55,25 @@ class OrderDetailsController < ApplicationController
   # POST /order_details
   # POST /order_details.json
   def create
-    @order_detail = OrderDetail.new(order_detail_params)
-    respond_to do |format|
-      if @order_detail.save
-        format.html { redirect_to @order_detail, notice: 'Order detail was successfully created.' }
-        format.json { render :show, status: :created, location: @order_detail }
-      else
-        format.html { render :new }
-        format.json { render json: @order_detail.errors, status: :unprocessable_entity }
-      end
+    @notiid=params[:order_detail][:notification_id]
+    @orderID = Notification.find_by(id: @notiid)
+    @orderStatus = Ordr.find_by(id: @orderID.ordr_id)
+    @orderStatus = @orderStatus.status
+    if @orderStatus == 'open'
+        @order_detail = OrderDetail.new(order_detail_params)
+        respond_to do |format|
+          if @order_detail.save
+            format.html { redirect_to @order_detail, notice: 'Order detail was successfully created.' }
+            format.json { render :show, status: :created, location: @order_detail }
+          else
+            format.html { render :new }
+            format.json { render json: @order_detail.errors, status: :unprocessable_entity }
+          end
+        end
+    else
+       respond_to do |format|
+            format.html { redirect_to @order_detail, notice: 'already orderd' }
+          end
     end
   end
 

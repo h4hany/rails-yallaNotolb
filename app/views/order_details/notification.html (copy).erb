@@ -23,59 +23,17 @@
                 </thead>
 
                 <tbody>
-
-
-<!-- if owner show all else show only him  
-order_detail.ownerid
-order_detail.notisourceid
-order_detail.notidestid
--->
-
-
-
                 <% @order_details.each do |order_detail| %>
-
-
-<% if current_user.id == order_detail.ownerid %>
-
                     <tr>
                       <td><%= order_detail.item %></td>
                       <td><%= order_detail.qty %></td>
                       <td><%= order_detail.price %></td>
                       <td><%= order_detail.comment %></td>
-                       <td><%= order_detail.notification_id %></td>
-                <% if order_detail.status == "open" %>
+                       <td><%= order_detail.notification.id %></td>
                       <td><%= link_to 'Show', order_detail %></td>
                       <td><%= link_to 'Edit', edit_order_detail_path(order_detail) %></td>
                       <td><%= link_to 'Destroy', order_detail, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-
-                  <% end %>
                     </tr>
-<% end %>
-
-
-
-<% if current_user.id == order_detail.notidestid && current_user.id != order_detail.ownerid %>
-
-                    <tr>
-                      <td><%= order_detail.item %></td>
-                      <td><%= order_detail.qty %></td>
-                      <td><%= order_detail.price %></td>
-                      <td><%= order_detail.comment %></td>
-                       <td><%= order_detail.notification_id %></td>
-
-
-                  <% if order_detail.status == "open" %>
-                      <td><%= link_to 'Show', order_detail %></td>
-                      <td><%= link_to 'Edit', edit_order_detail_path(order_detail) %></td>
-                      <td><%= link_to 'Destroy', order_detail, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-
-                  <% end %>
-                    </tr>
-<% end %>
-
-
-
                 <% end %>
                 </tbody>
               </table>
@@ -90,7 +48,7 @@ order_detail.notidestid
         </div>
 
       </div>
-      <%= render partial: 'form',locals: {not_id: @x, ord_status: @orderStatus} %>
+      <%= render partial: 'form',locals: {not_id: @x} %>
 
     </div>
   </div>

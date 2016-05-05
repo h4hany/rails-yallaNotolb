@@ -32,7 +32,6 @@ order_detail.notidestid
 -->
 
 
-
                 <% @order_details.each do |order_detail| %>
 
 
@@ -44,18 +43,15 @@ order_detail.notidestid
                       <td><%= order_detail.price %></td>
                       <td><%= order_detail.comment %></td>
                        <td><%= order_detail.notification_id %></td>
-                <% if order_detail.status == "open" %>
                       <td><%= link_to 'Show', order_detail %></td>
                       <td><%= link_to 'Edit', edit_order_detail_path(order_detail) %></td>
                       <td><%= link_to 'Destroy', order_detail, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-
-                  <% end %>
                     </tr>
 <% end %>
 
 
 
-<% if current_user.id == order_detail.notidestid && current_user.id != order_detail.ownerid %>
+<% if current_user.id == order_detail.notisourceid && current_user.id != order_detail.ownerid %>
 
                     <tr>
                       <td><%= order_detail.item %></td>
@@ -63,14 +59,9 @@ order_detail.notidestid
                       <td><%= order_detail.price %></td>
                       <td><%= order_detail.comment %></td>
                        <td><%= order_detail.notification_id %></td>
-
-
-                  <% if order_detail.status == "open" %>
                       <td><%= link_to 'Show', order_detail %></td>
                       <td><%= link_to 'Edit', edit_order_detail_path(order_detail) %></td>
                       <td><%= link_to 'Destroy', order_detail, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-
-                  <% end %>
                     </tr>
 <% end %>
 
@@ -90,7 +81,7 @@ order_detail.notidestid
         </div>
 
       </div>
-      <%= render partial: 'form',locals: {not_id: @x, ord_status: @orderStatus} %>
+      <%= render partial: 'form',locals: {not_id: @x} %>
 
     </div>
   </div>

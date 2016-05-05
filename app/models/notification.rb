@@ -3,5 +3,6 @@ class Notification < ActiveRecord::Base
 #  	entangle
 	belongs_to :user, :foreign_key => :user_id
 	belongs_to :ordr, :foreign_key => :ordr_id
+  has_many :order_detail
 
 end

@@ -78,6 +78,29 @@ class OrdrsController < ApplicationController
     end
   end
 
+def cancel
+   #order_id=params[:id]
+
+   Ordr.find_by(id: params[:id]).update(:status => "cancel")
+    respond_to do |format|
+         format.html { redirect_to ordrs_url, notice: 'Ordr was successfully canceld.' }
+end
+
+  end
+
+
+def finish
+   #order_id=params[:id]
+
+   Ordr.find_by(id: params[:id]).update(:status => "finish")
+    respond_to do |format|
+         format.html { redirect_to ordrs_url, notice: 'Ordr was successfully finish.' }
+end
+
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ordr

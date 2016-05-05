@@ -5,7 +5,8 @@
             <div id="error_explanation">
               <h2><%= pluralize(OrderDetail.new.errors.count, "error") %> prohibited this order_detail from
                 being
-                saved:</h2>
+                saved:</h2>    @order_details.status
+
 
               <ul>
                 <% OrderDetail.new.errors.full_messages.each do |message| %>
@@ -43,6 +44,10 @@
         </div>
 
         <%= f.hidden_field :notification_id ,value:not_id,class:"form-control"%>
+
+        <%= f.hidden_field :orderstatus ,value:ord_status,class:"form-control"%>
+
+
 
         <div class="actions">
           <%= f.button "Add Order Detalis",class:"mybutton btn"%>

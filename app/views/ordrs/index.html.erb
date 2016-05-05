@@ -33,7 +33,9 @@
                   <!-- <td><%= ordr.user %></td> -->
                   <td><%= link_to 'Show', ordr %></td>
                   <td><%= link_to 'Edit', edit_ordr_path(ordr) %></td>
-                  <td><%= link_to 'Destroy', ordr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><a href="/ordrs/<%= ordr.id %>/cancel">cancel</a></td>
+                  <td><a href="/ordrs/<%= ordr.id %>/finish">finish</a></td>
+
                 </tr>
             <% end %>
             </tbody>
